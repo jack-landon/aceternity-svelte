@@ -9,23 +9,23 @@ export const docsConfig: DocsConfig = {
 	mainNav: [
 		{
 			title: 'Documentation',
-			href: '/docs'
+			href: '/'
 		},
 		{
 			title: 'Components',
-			href: '/docs/components/accordion'
+			href: '/components'
 		},
 		{
 			title: 'Themes',
-			href: '/themes'
+			href: '/'
 		},
 		{
 			title: 'Examples',
-			href: '/examples/dashboard'
+			href: '/'
 		},
 		{
 			title: 'GitHub',
-			href: 'https://github.com/huntabyte/shadcn-svelte',
+			href: '',
 			external: true
 		}
 	],
@@ -35,37 +35,37 @@ export const docsConfig: DocsConfig = {
 			items: [
 				{
 					title: 'Introduction',
-					href: '/docs',
+					href: '/',
 					items: []
 				},
 				{
 					title: 'Installation',
-					href: '/docs/installation',
+					href: '/',
 					items: []
 				},
 				{
 					title: 'components.json',
-					href: '/docs/components-json',
+					href: '/components',
 					items: []
 				},
 				{
 					title: 'Theming',
-					href: '/docs/theming',
+					href: '/',
 					items: []
 				},
 				{
 					title: 'Dark mode',
-					href: '/docs/dark-mode',
+					href: '/',
 					items: []
 				},
 				{
 					title: 'CLI',
-					href: '/docs/cli',
+					href: '/',
 					items: []
 				},
 				{
 					title: 'Typography',
-					href: '/docs/typography',
+					href: '/',
 					items: []
 				},
 				{

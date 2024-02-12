@@ -10,12 +10,12 @@
 		},
 		{
 			name: 'About',
-			link: '/about',
+			link: '/',
 			icon: User
 		},
 		{
 			name: 'Contact',
-			link: '/contact',
+			link: '/',
 			icon: MessageCircle
 		}
 	];

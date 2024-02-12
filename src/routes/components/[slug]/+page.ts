@@ -3,8 +3,6 @@ import { redirect } from '@sveltejs/kit';
 import { error } from '@sveltejs/kit';
 import { aceternityComponents } from '@/config/components.js';
 
-export const prerender = true;
-
 export async function load(event) {
 	try {
 		console.log('Entering', event.params.slug);
