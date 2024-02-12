@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://aceternity.sveltekit.io/sitemap.xml
