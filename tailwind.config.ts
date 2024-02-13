@@ -49,6 +49,9 @@ const config = {
 						p: {
 							'margin-top': '0',
 							'margin-bottom': '0'
+						},
+						a: {
+							'text-decoration': 'none'
 						}
 					}
 				}

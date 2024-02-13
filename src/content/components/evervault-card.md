@@ -8,7 +8,7 @@ component: true
     import PropsTable from '$lib/components/PropsTable.svelte'
     import InstallDependenciesCodeBlock from '$lib/components/InstallDependenciesCodeBlock.svelte'
     import AddCnUtilCodeBlock from '$lib/components/AddCnUtilCodeBlock.svelte'
-    import EvervaultCard from '$lib/aceternity-components/EvervaultCard/EvervaultCard.svelte'
+    import EvervaultCardDemo from '$lib/aceternity-components/EvervaultCard/EvervaultCardDemo.svelte'
 
     let evervaultCardProps = [
         {name: 'text', type: 'string | undefined', description: 'The text that stays on the card'},
@@ -20,7 +20,7 @@ component: true
 
 <DocsPreview>
 <div slot='preview'>
-<EvervaultCard />
+<EvervaultCardDemo />
 </div>
 
 <div slot='code'>
@@ -71,7 +71,7 @@ component: true
 ```svelte
 <script lang="ts">
 	import { useMotionTemplate, useMotionValue, Motion } from 'svelte-motion';
-	import { cn } from '@/utils';
+	import { cn } from '$lib/utils';
 	import { onMount } from 'svelte';
 
 	export let text: string | undefined = undefined;
@@ -149,7 +149,9 @@ component: true
 				<div
 					class="absolute h-full w-full rounded-full bg-white/[0.8] blur-sm dark:bg-black/[0.8]"
 				/>
-				<span class="z-20 text-black dark:text-white">{text}</span>
+				{#if text}
+					<span class="z-20 text-black dark:text-white">{text}</span>
+				{/if}
 			</div>
 		</div>
 	</div>

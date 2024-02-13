@@ -6,7 +6,7 @@
 		id: number;
 		name: string;
 		designation: string;
-		content: HTMLElement;
+		content: string;
 	};
 
 	export let items: Card[];
@@ -14,7 +14,7 @@
 	export let scaleFactor: number | undefined = undefined;
 
 	let interval: any;
-	const CARD_OFFSET = offset || 10;
+	const CARD_OFFSET = offset || 16;
 	const SCALE_FACTOR = scaleFactor || 0.06;
 	let cards: Card[] = items;
 

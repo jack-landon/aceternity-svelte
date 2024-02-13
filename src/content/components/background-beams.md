@@ -27,7 +27,7 @@ component: true
 </script>
 
 <div
-	class="relative flex h-[40rem] w-full flex-col items-center justify-center rounded-md bg-neutral-950 antialiased"
+	class="relative flex h-[40rem] w-full flex-col items-center justify-center rounded-md bg-neutral-950 px-32 antialiased"
 >
 	<div class="mx-auto max-w-2xl p-4">
 		<h1
@@ -45,7 +45,7 @@ component: true
 		<input
 			type="text"
 			placeholder="hi@manuarora.in"
-			class="relative z-10 mt-4 w-full rounded-lg border border-neutral-800 bg-neutral-950 placeholder:text-neutral-700 focus:ring-2 focus:ring-teal-500"
+			class="relative z-10 mt-4 w-full rounded-lg border border-neutral-800 bg-neutral-950 p-2 placeholder:text-neutral-700 focus:ring-2 focus:ring-teal-500"
 		/>
 	</div>
 	<BackgroundBeams />
@@ -103,7 +103,7 @@ function addVariablesForColors({ addBase, theme }: any) {
 ```svelte
 <script lang="ts">
 	import { cn } from '@/utils';
-	import { Motion, M } from 'svelte-motion';
+	import { M, Motion } from 'svelte-motion';
 
 	export let className: string | undefined = undefined;
 
@@ -163,7 +163,7 @@ function addVariablesForColors({ addBase, theme }: any) {
 
 <div
 	class={cn(
-		'absolute inset-0 flex h-full  w-full items-center justify-center [mask-repeat:no-repeat] [mask-size:40px]',
+		'absolute  inset-0 flex h-full  w-full items-center justify-center [mask-repeat:no-repeat] [mask-size:40px]',
 		className
 	)}
 >
@@ -183,8 +183,9 @@ function addVariablesForColors({ addBase, theme }: any) {
 		></path>
 
 		{#each paths as path, index (index)}
-			<Motion let:motion isSVG={true}>
+			<Motion isSVG={true} let:motion>
 				<path
+					use:motion
 					d={path}
 					stroke={`url(#linearGradient-${index})`}
 					stroke-opacity="0.4"
@@ -195,8 +196,8 @@ function addVariablesForColors({ addBase, theme }: any) {
 		<defs>
 			{#each paths as path, index (`gradient-${index}`)}
 				<Motion
-					let:motion
 					isSVG={true}
+					let:motion
 					animate={{
 						x1: ['0%', '100%'],
 						x2: ['0%', '95%'],
@@ -210,7 +211,14 @@ function addVariablesForColors({ addBase, theme }: any) {
 						delay: Math.random() * 10
 					}}
 				>
-					<linearGradient id={`linearGradient-${index}`} x1="100%" x2="100%" y1="100%" y2="100%">
+					<linearGradient
+						use:motion
+						id={`linearGradient-${index}`}
+						x1="100%"
+						x2="100%"
+						y1="100%"
+						y2="100%"
+					>
 						<stop stop-color="#18CCFC" stop-opacity="0"></stop>
 						<stop stop-color="#18CCFC"></stop>
 						<stop offset="32.5%" stop-color="#6344F5"></stop>

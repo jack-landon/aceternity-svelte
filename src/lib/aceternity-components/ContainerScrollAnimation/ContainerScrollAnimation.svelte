@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { useElementScroll, useTransform, Motion } from 'svelte-motion';
+	import { useTransform, Motion, useViewportScroll } from 'svelte-motion';
 	import { onMount } from 'svelte';
 
 	export let users: {
@@ -9,12 +9,9 @@
 		badge?: string;
 	}[];
 
-	let containerRef: HTMLDivElement | null = null;
-	const scrollMotionValue = useElementScroll(containerRef);
+	let containerRef: HTMLDivElement;
+	let { scrollYProgress } = useViewportScroll();
 
-	// const { scrollYProgress } = useScroll({
-	// 	target: containerRef
-	// });
 	let isMobile: boolean = false;
 
 	onMount(() => {
@@ -32,12 +29,12 @@
 		return isMobile ? [0.7, 0.9] : [1.05, 1];
 	};
 
-	const rotate = useTransform(scrollMotionValue.scrollYProgress, [0, 1], [20, 0]);
-	const scale = useTransform(scrollMotionValue.scrollYProgress, [0, 1], scaleDimensions());
-	const translate = useTransform(scrollMotionValue.scrollYProgress, [0, 1], [0, -100]);
+	$: rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
+	$: scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());
+	$: translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
 </script>
 
-<div class="relative flex h-[80rem] items-center justify-center p-20" bind:this={containerRef}>
+<div class="relative flex items-center justify-center px-16" bind:this={containerRef}>
 	<div class="relative w-full py-40" style="perspective: 1000px;">
 		<Motion
 			let:motion

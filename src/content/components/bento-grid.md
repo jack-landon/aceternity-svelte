@@ -9,6 +9,8 @@ component: true
     import InstallDependenciesCodeBlock from '$lib/components/InstallDependenciesCodeBlock.svelte'
     import AddCnUtilCodeBlock from '$lib/components/AddCnUtilCodeBlock.svelte'
     import BentoGrid from '$lib/aceternity-components/BentoGrid/BentoGridDemo.svelte'
+	// import BentoGridDemoPopulatedWithHeaderAndContent from '$lib/aceternity-components/BentoGrid/BentoGridDemoPopulatedWithHeaderAndContent.svelte';
+	import BentoGridDemoTwoColumnGrid from '$lib/aceternity-components/BentoGrid/BentoGridDemoTwoColumnGrid.svelte';
 
     let bentoGridProps = [
         {name: 'className', type: 'string | undefined', description: 'The class name of the child component.'}]
@@ -170,6 +172,67 @@ export { BentoGrid, BentoGridItem };
 ```
 
 </CodeBlock>
+
+## Examples
+
+### 2 Column Grid
+
+<DocsPreview>
+<div slot='preview'>
+<BentoGridDemoTwoColumnGrid />
+</div>
+
+<div slot='code'>
+
+```svelte
+<script lang="ts">
+	import { ClipboardCopy, File, FileSignature, Table } from 'lucide-svelte';
+	import BentoGrid from './BentoGrid.svelte';
+	import BentoGridItem from './BentoGridItem.svelte';
+
+	const items = [
+		{
+			title: 'The Dawn of Innovation',
+			description: 'Explore the birth of groundbreaking ideas and inventions.',
+			className: 'md:col-span-2',
+			icon: ClipboardCopy
+		},
+		{
+			title: 'The Digital Revolution',
+			description: 'Dive into the transformative power of technology.',
+			className: 'md:col-span-1',
+			icon: File
+		},
+		{
+			title: 'The Art of Design',
+			description: 'Discover the beauty of thoughtful and functional design.',
+			className: 'md:col-span-1',
+			icon: FileSignature
+		},
+		{
+			title: 'The Power of Communication',
+			description: 'Understand the impact of effective communication in our lives.',
+			className: 'md:col-span-2',
+			icon: Table
+		}
+	];
+</script>
+
+<BentoGrid className="max-w-4xl mx-auto md:auto-rows-[20rem]">
+	{#each items as item, i (i)}
+		<BentoGridItem title={item.title} description={item.description} className={item.className}>
+			<div
+				slot="header"
+				class="flex h-full min-h-[6rem] w-full flex-1 rounded-xl border border-transparent bg-neutral-100 bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)] dark:border-white/[0.2] dark:bg-black dark:bg-dot-white/[0.2]"
+			></div>
+			<svelte:component this={item.icon} slot="icon" class="h-4 w-4 text-neutral-500" />
+		</BentoGridItem>
+	{/each}
+</BentoGrid>
+```
+
+</div>
+</DocsPreview>
 
 ## Props
 

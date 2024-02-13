@@ -47,7 +47,8 @@
 		{
 			name: 'Sarah Brown',
 			designation: 'CEO, StartUp',
-			image: 'https://picsum.photos/id/17/300/300'
+			image: 'https://picsum.photos/id/17/300/300',
+			badge: 'Mentor'
 		},
 		{
 			name: 'James Wilson',
@@ -64,12 +65,14 @@
 		{
 			name: 'Richard Taylor',
 			designation: 'Frontend Developer, WebSolutions',
-			image: 'https://picsum.photos/id/20/300/300'
+			image: 'https://picsum.photos/id/20/300/300',
+			badge: 'Mentor'
 		},
 		{
 			name: 'Linda Anderson',
 			designation: 'Backend Developer, ServerSecure',
-			image: 'https://picsum.photos/id/21/300/300'
+			image: 'https://picsum.photos/id/21/300/300',
+			badge: 'Mentor'
 		},
 		{
 			name: 'William Thomas',
@@ -92,17 +95,20 @@
 		{
 			name: 'Jennifer Harris',
 			designation: 'Network Engineer, NetConnect',
-			image: 'https://picsum.photos/id/25/300/300'
+			image: 'https://picsum.photos/id/25/300/300',
+			badge: 'Mentor'
 		},
 		{
 			name: 'Charles Clark',
 			designation: 'Security Analyst, SecureIT',
-			image: 'https://picsum.photos/id/26/300/300'
+			image: 'https://picsum.photos/id/26/300/300',
+			badge: 'Mentor'
 		},
 		{
 			name: 'Susan Lewis',
 			designation: 'Systems Analyst, SysAnalyse',
-			image: 'https://picsum.photos/id/27/300/300'
+			image: 'https://picsum.photos/id/27/300/300',
+			badge: 'Mentor'
 		},
 		{
 			name: 'Joseph Young',

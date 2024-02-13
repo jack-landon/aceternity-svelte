@@ -89,9 +89,8 @@ component: true
 
 ```svelte
 <script lang="ts">
-	import { cn } from '@/utils';
-	import { AnimatePresence, Motion } from 'svelte-motion';
-
+	import { Motion, AnimatePresence } from 'svelte-motion';
+	import { cn } from '$lib/utils';
 	export let items: {
 		title: string;
 		description: string;
@@ -110,7 +109,7 @@ component: true
 			on:mouseenter={() => (hoveredIndex = idx)}
 			on:mouseleave={() => (hoveredIndex = null)}
 		>
-			<AnimatePresence>
+			<AnimatePresence show={true}>
 				{#if hoveredIndex === idx}
 					<Motion
 						let:motion
@@ -122,7 +121,7 @@ component: true
 						}}
 						exit={{
 							opacity: 0,
-							transition: { duration: 0.15, delay: 0.2 }
+							transition: { duration: 0.15, delay: 0.1 }
 						}}
 					>
 						<span
@@ -134,7 +133,7 @@ component: true
 			</AnimatePresence>
 			<div
 				class={cn(
-					'relative z-50 h-full w-full overflow-hidden rounded-2xl border border-transparent bg-black p-4 group-hover:border-slate-700 dark:border-white/[0.2]',
+					'relative z-20 h-full w-full overflow-hidden rounded-2xl border border-transparent bg-black p-4 group-hover:border-slate-700 dark:border-white/[0.2]',
 					className
 				)}
 			>

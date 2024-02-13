@@ -33,7 +33,7 @@ component: true
 		'https://images.unsplash.com/photo-1663765970236-f2acfde22237?q=80&w=3542&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 </script>
 
-<div class="relative flex h-[40rem] items-center justify-center">
+<div class="relative flex items-center justify-center">
 	<DirectionAwareHover {imageUrl}>
 		<p class="text-xl font-bold">In the mountains</p>
 		<p class="text-sm font-normal">$1299 / night</p>
@@ -76,7 +76,6 @@ component: true
 		if (!ref) return;
 
 		const fetchedDirection = getDirection(event, ref);
-		console.log('fetchedDirection', fetchedDirection);
 		switch (fetchedDirection) {
 			case 0:
 				direction = 'top';
@@ -169,7 +168,7 @@ component: true
 	>
 		<AnimatePresence show={true}>
 			<Motion let:motion initial="initial" whileHover={direction} exit="exit">
-				<div use:motion class="relative h-full w-full">
+				<div use:motion class="h-full w-full">
 					<Motion let:motion>
 						<div
 							use:motion
@@ -188,7 +187,7 @@ component: true
 							<img
 								src={imageUrl}
 								alt="image"
-								class={cn('h-full w-full scale-[1.15] object-cover', imageClassName)}
+								class={cn('h-full w-full scale-150 object-cover', imageClassName)}
 								width="1000"
 								height="1000"
 							/>

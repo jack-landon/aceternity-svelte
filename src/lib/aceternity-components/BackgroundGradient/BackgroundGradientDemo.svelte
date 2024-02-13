@@ -3,7 +3,10 @@
 </script>
 
 <div>
-	<BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
+	<BackgroundGradient
+		animate={true}
+		className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900"
+	>
 		<img
 			src="https://ui.aceternity.com/_next/image?url=%2Fjordans.webp&w=828&q=75"
 			height="400"

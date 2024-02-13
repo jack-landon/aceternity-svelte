@@ -1,5 +1,6 @@
 <script>
-	import { EvervaultCard, Icon } from '.';
+	import EvervaultCard from './EvervaultCard.svelte';
+	import Icon from './Icon.svelte';
 </script>
 
 <div

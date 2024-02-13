@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { useMotionTemplate, useMotionValue, Motion } from 'svelte-motion';
-	import { cn } from '@/utils';
+	import { cn } from '$lib/utils';
 	import { onMount } from 'svelte';
 
 	export let text: string | undefined = undefined;
@@ -78,7 +78,9 @@
 				<div
 					class="absolute h-full w-full rounded-full bg-white/[0.8] blur-sm dark:bg-black/[0.8]"
 				/>
-				<span class="z-20 text-black dark:text-white">{text}</span>
+				{#if text}
+					<span class="z-20 text-black dark:text-white">{text}</span>
+				{/if}
 			</div>
 		</div>
 	</div>

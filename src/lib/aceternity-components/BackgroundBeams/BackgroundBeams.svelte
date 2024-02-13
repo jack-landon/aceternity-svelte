@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from '@/utils';
-	import { Motion, M } from 'svelte-motion';
+	import { M, Motion } from 'svelte-motion';
 
 	export let className: string | undefined = undefined;
 
@@ -60,7 +60,7 @@
 
 <div
 	class={cn(
-		'absolute inset-0 flex h-full  w-full items-center justify-center [mask-repeat:no-repeat] [mask-size:40px]',
+		'absolute  inset-0 flex h-full  w-full items-center justify-center [mask-repeat:no-repeat] [mask-size:40px]',
 		className
 	)}
 >
@@ -80,8 +80,9 @@
 		></path>
 
 		{#each paths as path, index (index)}
-			<Motion let:motion isSVG={true}>
+			<Motion isSVG={true} let:motion>
 				<path
+					use:motion
 					d={path}
 					stroke={`url(#linearGradient-${index})`}
 					stroke-opacity="0.4"
@@ -92,8 +93,8 @@
 		<defs>
 			{#each paths as path, index (`gradient-${index}`)}
 				<Motion
-					let:motion
 					isSVG={true}
+					let:motion
 					animate={{
 						x1: ['0%', '100%'],
 						x2: ['0%', '95%'],
@@ -107,7 +108,14 @@
 						delay: Math.random() * 10
 					}}
 				>
-					<linearGradient id={`linearGradient-${index}`} x1="100%" x2="100%" y1="100%" y2="100%">
+					<linearGradient
+						use:motion
+						id={`linearGradient-${index}`}
+						x1="100%"
+						x2="100%"
+						y1="100%"
+						y2="100%"
+					>
 						<stop stop-color="#18CCFC" stop-opacity="0"></stop>
 						<stop stop-color="#18CCFC"></stop>
 						<stop offset="32.5%" stop-color="#6344F5"></stop>

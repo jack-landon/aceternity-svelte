@@ -15,7 +15,6 @@
 		if (!ref) return;
 
 		const fetchedDirection = getDirection(event, ref);
-		console.log('fetchedDirection', fetchedDirection);
 		switch (fetchedDirection) {
 			case 0:
 				direction = 'top';
@@ -108,7 +107,7 @@
 	>
 		<AnimatePresence show={true}>
 			<Motion let:motion initial="initial" whileHover={direction} exit="exit">
-				<div use:motion class="relative h-full w-full">
+				<div use:motion class="h-full w-full">
 					<Motion let:motion>
 						<div
 							use:motion
@@ -127,7 +126,7 @@
 							<img
 								src={imageUrl}
 								alt="image"
-								class={cn('h-full w-full scale-[1.15] object-cover', imageClassName)}
+								class={cn('h-full w-full scale-150 object-cover', imageClassName)}
 								width="1000"
 								height="1000"
 							/>

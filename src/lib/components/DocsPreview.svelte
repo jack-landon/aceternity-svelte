@@ -12,7 +12,7 @@
 	</Tabs.List>
 	<Tabs.Content value="preview">
 		<div class="rounded-lg border-[1px] border-gray-800 p-1">
-			<GridAndDotBackgroundsSmallGrid>
+			<GridAndDotBackgroundsSmallGrid showFade={false}>
 				<slot name="preview" />
 			</GridAndDotBackgroundsSmallGrid>
 		</div>

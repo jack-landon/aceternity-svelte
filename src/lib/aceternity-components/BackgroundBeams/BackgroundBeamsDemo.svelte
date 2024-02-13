@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="relative flex h-[40rem] w-full flex-col items-center justify-center rounded-md bg-neutral-950 antialiased"
+	class="relative flex h-[40rem] w-full flex-col items-center justify-center rounded-md bg-neutral-950 px-32 antialiased"
 >
 	<div class="mx-auto max-w-2xl p-4">
 		<h1
@@ -21,7 +21,7 @@
 		<input
 			type="text"
 			placeholder="hi@manuarora.in"
-			class="relative z-10 mt-4 w-full rounded-lg border border-neutral-800 bg-neutral-950 placeholder:text-neutral-700 focus:ring-2 focus:ring-teal-500"
+			class="relative z-10 mt-4 w-full rounded-lg border border-neutral-800 bg-neutral-950 p-2 placeholder:text-neutral-700 focus:ring-2 focus:ring-teal-500"
 		/>
 	</div>
 	<BackgroundBeams />

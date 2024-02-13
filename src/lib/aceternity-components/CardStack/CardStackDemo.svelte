@@ -26,6 +26,6 @@
 	];
 </script>
 
-<div class="flex h-[40rem] w-full items-center justify-center">
+<div class="flex w-full items-center justify-center">
 	<CardStack items={CARDS} />
 </div>

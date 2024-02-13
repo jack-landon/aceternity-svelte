@@ -4,7 +4,7 @@
 
 	export let className: string | undefined = undefined;
 	export let containerClassName: string | undefined = undefined;
-	export let animate: boolean | undefined = true;
+	export let animate: boolean = true;
 
 	const variants = {
 		initial: {
@@ -41,7 +41,6 @@
 			)}
 		/>
 	</Motion>
-
 	<Motion
 		let:motion
 		variants={animate ? variants : undefined}
