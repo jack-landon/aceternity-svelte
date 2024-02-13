@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { cn } from '@/utils';
+	import { cn } from '$lib/utils';
 
-	export let className: string;
-	export let containerClassName: string | undefined = '';
+	export let className: string | undefined = undefined;
+	export let containerClassName: string | undefined = undefined;
+	export let isMouseEntered = false;
 
 	let containerRef: HTMLDivElement;
-	let isMouseEntered: boolean = false;
 
 	const handleMouseMove = (e: MouseEvent) => {
 		if (!containerRef) return;
@@ -28,7 +28,7 @@
 </script>
 
 <div
-	class={cn('flex items-center justify-center py-4', containerClassName)}
+	class={cn('flex items-center justify-center py-20', containerClassName)}
 	style="perspective: 1000px;"
 >
 	<div

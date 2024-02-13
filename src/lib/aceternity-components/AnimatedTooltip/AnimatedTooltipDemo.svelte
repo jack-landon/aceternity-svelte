@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { AnimatedTooltip } from '.';
+	import AnimatedTooltip from './AnimatedTooltip.svelte';
 
 	const people = [
 		{

@@ -7,12 +7,17 @@
 	// import "../styles/globals.css";
 	// import { config } from "@/stores";
 	// import * as Fathom from "fathom-client";
-	import { ModeWatcher } from 'mode-watcher';
+	import { ModeWatcher, setMode } from 'mode-watcher';
 	// import { Toaster } from '$lib/components/ui/sonner';
 	import '$lib/assets/prism-vsc-dark-plus.css';
 	import PageTransition from '$components/Transition.svelte';
+	import { onMount } from 'svelte';
 
 	export let data;
+
+	onMount(() => {
+		setMode('dark');
+	});
 
 	// $: updateTheme($config.theme, $page.url.pathname);
 	// $: $page.url.pathname, browser && Fathom.trackPageview();

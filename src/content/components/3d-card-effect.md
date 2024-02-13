@@ -9,10 +9,13 @@ component: true
     import InstallDependenciesCodeBlock from '$lib/components/InstallDependenciesCodeBlock.svelte'
     import AddCnUtilCodeBlock from '$lib/components/AddCnUtilCodeBlock.svelte'
     import ThreeDCardEffect from '$lib/aceternity-components/ThreeDCardEffect/ThreeDCardEffectDemo.svelte'
+	import ThreeDCardEffectWithRotationDemo from '$lib/aceternity-components/ThreeDCardEffect/ThreeDCardEffectDemoWithRotation.svelte'
 
     let containerProps = [
         {name: 'className', type: 'string | undefined', description: 'The CSS class to be applied to the container'},
-        {name: 'containerClassName', type: 'string | undefined', description: 'The CSS class to be applied to the outer container'}]
+        {name: 'containerClassName', type: 'string | undefined', description: 'The CSS class to be applied to the outer container'},
+		{name: 'isMouseEntered', type: 'boolean', description: 'Default: false. Bind the value of a parent isMouseEntered to this so that it can be used for items.'}
+		]
 
     let bodyProps = [{name: 'className', type: 'string | undefined', description: 'The CSS class to be applied to the body'}]
 
@@ -24,6 +27,7 @@ component: true
         {name: 'rotateX', type: 'number | string | undefined', description: 'The X rotation of the item.'},
         {name: 'rotateY', type: 'number | string | undefined', description: 'The Y rotation of the item.'},
         {name: 'rotateZ', type: 'number | string | undefined', description: 'The Z rotation of the item.'},
+		{name: 'isMouseEntered', type: 'boolean', description: 'Default: false. Pass in whether the mouse hase entered the container'}
 		]
 </script>
 
@@ -36,43 +40,51 @@ component: true
 
 ```svelte
 <script lang="ts">
-	import { CardContainer, CardItem, CardBody } from '.';
+	import CardBody from './CardBody.svelte';
+	import CardContainer from './CardContainer.svelte';
+	import CardItem from './CardItem.svelte';
+
+	let isMouseEntered = false;
 </script>
 
-<CardContainer className="inter-var">
+<CardContainer bind:isMouseEntered className="inter-var">
 	<CardBody
 		className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  "
 	>
-		<CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-white">
+		<CardItem
+			{isMouseEntered}
+			translateZ="50"
+			className="text-xl font-bold text-neutral-600 dark:text-white"
+		>
 			Make things float in air
 		</CardItem>
 		<CardItem
-			as="p"
+			{isMouseEntered}
 			translateZ="60"
 			className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
 		>
 			Hover over this card to unleash the power of CSS perspective
 		</CardItem>
-		<CardItem translateZ="100" className="w-full mt-4">
+		<CardItem {isMouseEntered} translateZ="100" className="w-full mt-4">
 			<img
 				src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-				alt="thumbnail"
 				height="1000"
 				width="1000"
 				class="h-60 w-full rounded-xl object-cover group-hover/card:shadow-xl"
+				alt="thumbnail"
 			/>
 		</CardItem>
 		<div class="mt-20 flex items-center justify-between">
 			<CardItem
+				{isMouseEntered}
 				translateZ={20}
-				as="button"
 				className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
 			>
 				Try now →
 			</CardItem>
 			<CardItem
+				{isMouseEntered}
 				translateZ={20}
-				as="button"
 				className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
 			>
 				Sign up
@@ -101,13 +113,13 @@ component: true
 
 ```svelte
 <script lang="ts">
-	import { cn } from '@/utils';
+	import { cn } from '$lib/utils';
 
-	export let className: string;
-	export let containerClassName: string | undefined = '';
+	export let className: string | undefined = undefined;
+	export let containerClassName: string | undefined = undefined;
+	export let isMouseEntered = false;
 
 	let containerRef: HTMLDivElement;
-	let isMouseEntered: boolean = false;
 
 	const handleMouseMove = (e: MouseEvent) => {
 		if (!containerRef) return;
@@ -130,7 +142,7 @@ component: true
 </script>
 
 <div
-	class={cn('flex items-center justify-center py-4', containerClassName)}
+	class={cn('flex items-center justify-center py-20', containerClassName)}
 	style="perspective: 1000px;"
 >
 	<div
@@ -176,19 +188,20 @@ component: true
 
 ```svelte
 <script lang="ts">
-	import { cn } from '@/utils';
+	import { cn } from '$lib/utils';
 
-	export let className: string | undefined;
+	export let className: string | undefined = undefined;
 	export let translateX: number | string | undefined = 0;
 	export let translateY: number | string | undefined = 0;
 	export let translateZ: number | string | undefined = 0;
 	export let rotateX: number | string | undefined = 0;
 	export let rotateY: number | string | undefined = 0;
 	export let rotateZ: number | string | undefined = 0;
+	export let isMouseEntered: boolean = false;
 
 	let ref: HTMLDivElement;
-	let isMouseEntered: boolean = false;
-	$: isMouseEntered, handleAnimations;
+
+	$: isMouseEntered, handleAnimations();
 
 	const handleAnimations = () => {
 		if (!ref) return;
@@ -202,9 +215,6 @@ component: true
 
 <div
 	bind:this={ref}
-	on:mouseenter={() => (isMouseEntered = true)}
-	on:mousemove={() => (isMouseEntered = true)}
-	on:mouseleave={() => (isMouseEntered = false)}
 	class={cn('w-fit transition duration-200 ease-linear', className)}
 	{...$$props}
 >
@@ -225,6 +235,78 @@ export { CardContainer, CardBody, CardItem };
 ```
 
 </CodeBlock>
+
+## Examples
+
+### With Rotation
+
+<DocsPreview>
+<div slot='preview'>
+<ThreeDCardEffectWithRotationDemo />
+</div>
+
+<div slot='code'>
+
+```svelte
+<script lang="ts">
+	import CardBody from './CardBody.svelte';
+	import CardContainer from './CardContainer.svelte';
+	import CardItem from './CardItem.svelte';
+
+	let isMouseEntered = false;
+</script>
+
+<CardContainer bind:isMouseEntered className="inter-var">
+	<CardBody
+		className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  "
+	>
+		<CardItem
+			{isMouseEntered}
+			translateZ="50"
+			className="text-xl font-bold text-neutral-600 dark:text-white"
+		>
+			Make things float in air
+		</CardItem>
+		<CardItem
+			{isMouseEntered}
+			translateZ="60"
+			className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+		>
+			Hover over this card to unleash the power of CSS perspective
+		</CardItem>
+		<CardItem {isMouseEntered} translateZ="100" rotateX={20} rotateZ={-10} className="w-full mt-4">
+			<img
+				src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+				height="1000"
+				width="1000"
+				class="h-60 w-full rounded-xl object-cover group-hover/card:shadow-xl"
+				alt="thumbnail"
+			/>
+		</CardItem>
+		<div class="mt-20 flex items-center justify-between">
+			<CardItem
+				{isMouseEntered}
+				translateZ={20}
+				translateX={-40}
+				className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+			>
+				Try now →
+			</CardItem>
+			<CardItem
+				{isMouseEntered}
+				translateZ={20}
+				translateX={40}
+				className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+			>
+				Sign up
+			</CardItem>
+		</div>
+	</CardBody>
+</CardContainer>
+```
+
+</div>
+</DocsPreview>
 
 ## Props
 

@@ -13,6 +13,7 @@
 	// import { DocsPager, TableOfContents } from "$components/docs";
 	import { badgeVariants } from '@/registry/new-york/ui/badge';
 	import { cn } from '$lib/utils';
+	import Badge from '$components/ui/badge/badge.svelte';
 
 	export let data;
 
@@ -35,7 +36,12 @@
 
 <main class="prose dark:prose-invert !max-w-full py-12">
 	<h1 class="text-4xl font-bold">{details.name}</h1>
-	<p class="mb-12 text-lg text-muted-foreground">{details.description}</p>
+	<p class="mb-12 text-lg text-muted-foreground">
+		{#if details.wip}
+			<Badge variant="destructive">Work in progress</Badge>
+		{/if}
+		{details.description}
+	</p>
 
 	<svelte:component this={data.content} />
 </main>

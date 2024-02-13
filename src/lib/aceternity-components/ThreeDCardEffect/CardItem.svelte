@@ -1,17 +1,18 @@
 <script lang="ts">
-	import { cn } from '@/utils';
+	import { cn } from '$lib/utils';
 
-	export let className: string | undefined;
+	export let className: string | undefined = undefined;
 	export let translateX: number | string | undefined = 0;
 	export let translateY: number | string | undefined = 0;
 	export let translateZ: number | string | undefined = 0;
 	export let rotateX: number | string | undefined = 0;
 	export let rotateY: number | string | undefined = 0;
 	export let rotateZ: number | string | undefined = 0;
+	export let isMouseEntered: boolean = false;
 
 	let ref: HTMLDivElement;
-	let isMouseEntered: boolean = false;
-	$: isMouseEntered, handleAnimations;
+
+	$: isMouseEntered, handleAnimations();
 
 	const handleAnimations = () => {
 		if (!ref) return;
@@ -25,9 +26,6 @@
 
 <div
 	bind:this={ref}
-	on:mouseenter={() => (isMouseEntered = true)}
-	on:mousemove={() => (isMouseEntered = true)}
-	on:mouseleave={() => (isMouseEntered = false)}
 	class={cn('w-fit transition duration-200 ease-linear', className)}
 	{...$$props}
 >

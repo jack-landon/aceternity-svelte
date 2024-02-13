@@ -410,7 +410,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: false
 	},
 	{
 		id: '3d-pin',
@@ -422,19 +423,21 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: false
 	},
 	{
 		id: 'animated-tooltip',
 		name: 'Animated Tooltip',
-		description: 'A cool tooltip that reveals on hover, follows mouse pointer',
+		description: 'A cool tooltip that reveals on hover, follows mouse pointer.',
 		thumbnail: AnimatedTooltipImage,
 		video: '',
 		file: 'animated-tooltip.md',
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: false
 	},
 	{
 		id: 'background-beams',
@@ -447,7 +450,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'background-boxes',
@@ -459,7 +463,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'background-gradient',
@@ -471,7 +476,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'bento-grid',
@@ -483,7 +489,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'card-hover-effect',
@@ -495,7 +502,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'card-stack',
@@ -508,7 +516,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'container-scroll-animation',
@@ -521,7 +530,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'direction-aware-hover',
@@ -534,7 +544,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'evervault-card',
@@ -547,7 +558,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'floating-navbar',
@@ -559,7 +571,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'following-pointer',
@@ -571,7 +584,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'glowing-stars',
@@ -583,7 +597,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'google-gemini-effect',
@@ -595,7 +610,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'gradient-animation',
@@ -608,7 +624,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'grid-and-dot-backgrounds',
@@ -620,7 +637,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'hero-parallax',
@@ -632,7 +650,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'images-slider',
@@ -644,7 +663,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'infinite-moving-cards',
@@ -657,7 +677,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'lamp-effect',
@@ -669,7 +690,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'layout-grid',
@@ -682,7 +704,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'meteors',
@@ -694,7 +717,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'moving-border',
@@ -707,7 +731,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'navbar-menu',
@@ -719,7 +744,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'parallax-scroll',
@@ -731,7 +757,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'sparkles',
@@ -744,7 +771,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'spotlight',
@@ -757,7 +785,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'sticky-scroll-reveal',
@@ -769,7 +798,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'svg-mask-effect',
@@ -782,7 +812,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'tabs',
@@ -794,7 +825,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'tailwind-css-buttons',
@@ -806,7 +838,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'text-generate-effect',
@@ -818,7 +851,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'text-reveal-card',
@@ -830,7 +864,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'tracing-beam',
@@ -844,7 +879,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'typewriter-effect',
@@ -856,7 +892,8 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	},
 	{
 		id: 'wavy-background',
@@ -868,6 +905,7 @@ export const aceternityComponents = [
 		disabled: false,
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
-		dateModified: '2024-02-13T01:00:00+10:00'
+		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: true
 	}
 ];

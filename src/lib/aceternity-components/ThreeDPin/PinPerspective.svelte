@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { M } from 'svelte-motion';
 	import { Motion } from 'svelte-motion';
 
 	export let title: string | undefined;
