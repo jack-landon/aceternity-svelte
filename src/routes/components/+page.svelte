@@ -2,7 +2,13 @@
 	import { Button } from '$lib/components/ui/button';
 	import { aceternityComponents } from '@/config/components';
 	import ComponentCard from '$lib/components/ComponentCard.svelte';
+	import { Metadata } from '$components/docs';
 </script>
+
+<Metadata
+	title="Components - Aceternity UI Svelte"
+	description="Copy and Paste beautiful components with Svelte-Motion animations and TailwindCSS styles included."
+/>
 
 <div>
 	<div

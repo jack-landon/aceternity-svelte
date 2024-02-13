@@ -22,14 +22,15 @@
 	$: details = data.componentDetails;
 	// $: componentSource = data.metadata.source?.replace('default', $config.style ?? 'default');
 	$: componentSource = data.metadata.source?.replace('default', $config.style ?? 'default');
+	$: details.thumbnail, console.log(details.thumbnail);
 </script>
 
 <Seo
-	title={details.name}
-	description={details.description}
+	title={`${details.name} - Aceternity UI Svelte`}
+	description={`${details.description} Copy and paste the component and edit as you need.`}
 	authorName={'Jack Landon'}
 	dateModified={details.dateModified}
-	image={details.thumbnail}
+	image={`https://aceternity.sveltekit.io${details.thumbnail.img.src}`}
 />
 
 <main class="prose dark:prose-invert !max-w-full py-12">

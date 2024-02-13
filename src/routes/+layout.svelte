@@ -2,7 +2,7 @@
 	import '../app.pcss';
 	import { page } from '$app/stores';
 	import { dev, browser } from '$app/environment';
-	import { Metadata, SiteFooter, SiteHeader, TailwindIndicator } from '$components/docs';
+	import { SiteFooter, SiteHeader, TailwindIndicator } from '$components/docs';
 	// import { updateTheme } from "@/utils";
 	// import "../styles/globals.css";
 	// import { config } from "@/stores";
@@ -19,7 +19,6 @@
 </script>
 
 <ModeWatcher />
-<Metadata />
 <!-- <Toaster /> -->
 
 <PageTransition url={data.url}>

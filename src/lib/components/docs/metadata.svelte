@@ -3,13 +3,14 @@
 	import { siteConfig } from '$lib/config/site';
 
 	export let title: string = siteConfig.name;
+	export let description: string = siteConfig.description;
 
 	$: title = $page.data?.title ? `${$page.data.title} - ${siteConfig.name}` : siteConfig.name;
 </script>
 
 <svelte:head>
 	<title>{title}</title>
-	<meta name="description" content={siteConfig.description} />
+	<meta name="description" content={description} />
 	<meta name="keywords" content={siteConfig.keywords} />
 	<meta name="author" content="Jack Landon" />
 	<meta name="twitter:card" content="summary_large_image" />
