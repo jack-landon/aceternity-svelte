@@ -26,7 +26,7 @@
 </script>
 
 <Seo
-	title={`${details.name} - Aceternity UI Svelte`}
+	title={`${details.name} Component - Aceternity UI Svelte`}
 	description={`${details.description} Copy and paste the component and edit as you need.`}
 	authorName={'Jack Landon'}
 	dateModified={details.dateModified}

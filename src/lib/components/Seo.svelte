@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { siteConfig } from '@/config/site';
 
 	export let title: string;
 	export let description: string;
 	export let authorName: string;
-	export let dateModified: string;
+	export let dateModified: string | undefined = undefined;
 	export let image: string | undefined;
 	// export let properties: ('article' | 'breadcrumbs' | 'organization')[]
 
@@ -12,8 +13,9 @@
 </script>
 
 <svelte:head>
-	<title>{title} - {authorName}</title>
+	<title>{title}</title>
 	<meta name="description" content={description} />
+	<meta name="keywords" content={siteConfig.keywords} />
 	<meta name="author" content={authorName} />
 
 	<!-- Facebook Meta Tags -->
