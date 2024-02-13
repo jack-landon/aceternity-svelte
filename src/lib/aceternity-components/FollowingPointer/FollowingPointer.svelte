@@ -5,21 +5,11 @@
 
 	export let className: string | undefined = undefined;
 
-	const x = useMotionValue(0);
-	const y = useMotionValue(0);
+	let x = useMotionValue(0);
+	let y = useMotionValue(0);
 	let ref: HTMLDivElement;
 	let rect: DOMRect | null = null;
 	let isInside: boolean = false;
-
-	// const colors = [
-	// 	'var(--sky-500)',
-	// 	'var(--neutral-500)',
-	// 	'var(--teal-500)',
-	// 	'var(--green-500)',
-	// 	'var(--blue-500)',
-	// 	'var(--red-500)',
-	// 	'var(--yellow-500)'
-	// ];
 
 	const colors = [
 		'bg-sky-500',
@@ -90,7 +80,7 @@
 						fill="currentColor"
 						stroke-width="1"
 						viewBox="0 0 16 16"
-						class="h-6 w-6 -translate-x-[12px] -translate-y-[10px] -rotate-[70deg] transform stroke-sky-600 text-sky-500"
+						class="h-6 w-6 -translate-x-[12px] -rotate-[70deg] transform stroke-sky-600 text-sky-500"
 						height="1em"
 						width="1em"
 						xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +106,7 @@
 					>
 						<div
 							use:motion
-							class={`min-w-max whitespace-nowrap rounded-full bg-neutral-200 px-2 py-2 text-xs text-white ${colors[Math.floor(Math.random() * colors.length)]}`}
+							class={`min-w-max whitespace-nowrap rounded-full bg-neutral-200 p-2 text-xs text-white ${colors[Math.floor(Math.random() * colors.length)]}`}
 						>
 							{#if $$slots.title}
 								<slot name="title" />

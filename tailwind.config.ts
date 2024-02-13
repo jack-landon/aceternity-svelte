@@ -52,6 +52,9 @@ const config = {
 						},
 						a: {
 							'text-decoration': 'none'
+						},
+						img: {
+							margin: '0'
 						}
 					}
 				}
