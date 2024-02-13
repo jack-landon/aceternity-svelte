@@ -1,26 +1,21 @@
 <script lang="ts">
-	import { useElementScroll, useTransform } from 'svelte-motion';
-	import { GoogleGeminiEffect } from '.';
+	import { useTransform, useViewportScroll } from 'svelte-motion';
+	import GoogleGeminiEffect from './GoogleGeminiEffect.svelte';
 
-	const ref: HTMLDivElement = {};
+	let ref: HTMLDivElement;
 
-	// const scrollMotionValue = useElementScroll({
-	// 	target: ref,
-	// 	offset: ['start start', 'end start']
-	// });
+	const { scrollYProgress } = useViewportScroll();
 
-	const scrollMotionValue = useElementScroll(ref);
-
-	const pathLengthFirst = useTransform(scrollMotionValue.scrollYProgress, [0, 0.8], [0.2, 1.2]);
-	const pathLengthSecond = useTransform(scrollMotionValue.scrollYProgress, [0, 0.8], [0.15, 1.2]);
-	const pathLengthThird = useTransform(scrollMotionValue.scrollYProgress, [0, 0.8], [0.1, 1.2]);
-	const pathLengthFourth = useTransform(scrollMotionValue.scrollYProgress, [0, 0.8], [0.05, 1.2]);
-	const pathLengthFifth = useTransform(scrollMotionValue.scrollYProgress, [0, 0.8], [0, 1.2]);
+	const pathLengthFirst = useTransform(scrollYProgress, [0, 0.8], [0.2, 1.2]);
+	const pathLengthSecond = useTransform(scrollYProgress, [0, 0.8], [0.15, 1.2]);
+	const pathLengthThird = useTransform(scrollYProgress, [0, 0.8], [0.1, 1.2]);
+	const pathLengthFourth = useTransform(scrollYProgress, [0, 0.8], [0.05, 1.2]);
+	const pathLengthFifth = useTransform(scrollYProgress, [0, 0.8], [0, 1.2]);
 </script>
 
 <div
-	class="relative h-[400vh] w-full overflow-clip rounded-md bg-black pt-40 dark:border dark:border-white/[0.1]"
-	bind:this={scrollMotionValue.ref}
+	class="relative h-[400vh] w-full overflow-clip rounded-md bg-black py-40 dark:border dark:border-white/[0.1]"
+	bind:this={ref}
 >
 	<GoogleGeminiEffect
 		pathLengths={[

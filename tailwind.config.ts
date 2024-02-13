@@ -55,6 +55,16 @@ const config = {
 						},
 						img: {
 							margin: '0'
+						},
+						blockquote: {
+							all: 'revert'
+						},
+						ul: {
+							all: 'revert'
+						},
+						li: {
+							all: 'revert',
+							'list-style-type': 'none'
 						}
 					}
 				}

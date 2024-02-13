@@ -598,7 +598,7 @@ export const aceternityComponents = [
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
 		dateModified: '2024-02-13T01:00:00+10:00',
-		wip: true
+		wip: false
 	},
 	{
 		id: 'google-gemini-effect',
@@ -611,7 +611,7 @@ export const aceternityComponents = [
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
 		dateModified: '2024-02-13T01:00:00+10:00',
-		wip: true
+		wip: false
 	},
 	{
 		id: 'gradient-animation',
@@ -625,7 +625,7 @@ export const aceternityComponents = [
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
 		dateModified: '2024-02-13T01:00:00+10:00',
-		wip: true
+		wip: false
 	},
 	{
 		id: 'grid-and-dot-backgrounds',
@@ -638,7 +638,7 @@ export const aceternityComponents = [
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
 		dateModified: '2024-02-13T01:00:00+10:00',
-		wip: true
+		wip: false
 	},
 	{
 		id: 'hero-parallax',
@@ -678,7 +678,7 @@ export const aceternityComponents = [
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
 		dateModified: '2024-02-13T01:00:00+10:00',
-		wip: true
+		wip: false
 	},
 	{
 		id: 'lamp-effect',

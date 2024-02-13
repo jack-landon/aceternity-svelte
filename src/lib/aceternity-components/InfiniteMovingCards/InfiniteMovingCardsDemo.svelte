@@ -35,7 +35,7 @@
 </script>
 
 <div
-	class="dark:bg-grid-white/[0.05] relative flex h-[40rem] flex-col items-center justify-center overflow-hidden rounded-md bg-white antialiased dark:bg-black"
+	class="relative flex h-[40rem] w-[60vw] flex-col items-center justify-center overflow-hidden rounded-md bg-white antialiased dark:bg-black dark:bg-grid-white/[0.05]"
 >
 	<InfiniteMovingCards items={testimonials} direction="right" speed="slow" />
 </div>
