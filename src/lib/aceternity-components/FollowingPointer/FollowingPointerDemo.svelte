@@ -1,6 +1,7 @@
 <script lang="ts">
 	import FollowingPointer from './FollowingPointer.svelte';
 	export let showDescription: boolean = true;
+	export let padding: string | undefined = undefined;
 	const blogContent = {
 		slug: 'amazing-tailwindcss-grid-layouts',
 		author: 'Jack Landon',
@@ -14,7 +15,7 @@
 	};
 </script>
 
-<div class="group w-full p-28">
+<div class={`group w-full ${padding}`}>
 	<FollowingPointer>
 		<div slot="title" class="flex items-center space-x-2">
 			<img

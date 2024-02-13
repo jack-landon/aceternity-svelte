@@ -16,7 +16,7 @@ component: true
 
 <DocsPreview>
 <div slot='preview'>
-<FollowingPointerDemo />
+<FollowingPointerDemo padding='p-28' />
 </div>
 
 <div slot='code'>
