@@ -1,7 +1,7 @@
 <script lang="ts">
 	import CodeBlock from './CodeBlock.svelte';
 
-	export let dependencies: string[] = ['framer-motion', 'clsx', 'tailwind-merge'];
+	export let dependencies: string[] = ['svelte-motion', 'clsx', 'tailwind-merge'];
 </script>
 
 <CodeBlock>
