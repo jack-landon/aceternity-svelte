@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="relative flex h-[40rem] w-full overflow-hidden rounded-md bg-black/[0.96] antialiased bg-grid-white/[0.02] md:items-center md:justify-center"
+	class="relative flex h-[40rem] overflow-hidden rounded-md bg-black/[0.96] px-16 antialiased bg-grid-white/[0.02] md:items-center md:justify-center lg:px-32"
 >
 	<Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 	<div class=" relative z-10 mx-auto w-full max-w-7xl p-4 pt-20 md:pt-0">

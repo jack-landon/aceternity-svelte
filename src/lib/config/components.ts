@@ -718,7 +718,7 @@ export const aceternityComponents = [
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
 		dateModified: '2024-02-13T01:00:00+10:00',
-		wip: true
+		wip: false
 	},
 	{
 		id: 'moving-border',
@@ -745,7 +745,7 @@ export const aceternityComponents = [
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
 		dateModified: '2024-02-13T01:00:00+10:00',
-		wip: true
+		wip: false
 	},
 	{
 		id: 'parallax-scroll',
@@ -786,7 +786,7 @@ export const aceternityComponents = [
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
 		dateModified: '2024-02-13T01:00:00+10:00',
-		wip: true
+		wip: false
 	},
 	{
 		id: 'sticky-scroll-reveal',
@@ -906,6 +906,6 @@ export const aceternityComponents = [
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
 		dateModified: '2024-02-13T01:00:00+10:00',
-		wip: true
+		wip: false
 	}
 ];

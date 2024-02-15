@@ -2,7 +2,6 @@
 	import { cn } from '@/utils';
 	import { createNoise3D } from 'simplex-noise';
 	import { onMount } from 'svelte';
-	import { writable } from 'svelte/store';
 
 	export let className: string | undefined = undefined;
 	export let containerClassName: string | undefined = undefined;

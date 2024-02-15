@@ -41,49 +41,49 @@ component: true
 
 <div class="relative flex w-full items-center justify-center">
 	<div class={'fixed inset-x-0 top-12 z-50 mx-auto max-w-2xl'}>
-		<NavbarMenu {active}>
+		<NavbarMenu>
 			<MenuItem {active} item="Services">
 				<div class="flex flex-col space-y-4 text-sm">
-					<HoveredLink href="/web-dev">Web Development</HoveredLink>
-					<HoveredLink href="/interface-design">Interface Design</HoveredLink>
-					<HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
-					<HoveredLink href="/branding">Branding</HoveredLink>
+					<HoveredLink href="#">Web Development</HoveredLink>
+					<HoveredLink href="#">Interface Design</HoveredLink>
+					<HoveredLink href="#">Search Engine Optimization</HoveredLink>
+					<HoveredLink href="#">Branding</HoveredLink>
 				</div>
 			</MenuItem>
 			<MenuItem {active} item="Products">
 				<div class="  grid grid-cols-2 gap-10 p-4 text-sm">
 					<ProductItem
 						title="Algochurn"
-						href="https://algochurn.com"
-						src="https://res.cloudinary.com/algochurn/image/upload/v1700109138/framer%20motion%20components/290shots_so_gruelx.png"
+						href="#"
+						src="https://images.pexels.com/photos/1031659/pexels-photo-1031659.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 						description="Prepare for tech interviews like never before."
 					/>
 					<ProductItem
 						title="Tailwind Master Kit"
-						href="https://tailwindmasterkit.com"
-						src="https://res.cloudinary.com/algochurn/image/upload/v1700109138/framer%20motion%20components/155shots_so_acab66.png"
+						href="#"
+						src="https://images.pexels.com/photos/733071/pexels-photo-733071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 						description="Production ready Tailwind css components for your next project"
 					/>
 					<ProductItem
 						title="Moonbeam"
-						href="https://gomoonbeam.com"
-						src="https://res.cloudinary.com/algochurn/image/upload/v1700109138/framer%20motion%20components/53shots_so_wygjpf.png"
+						href="#"
+						src="https://images.pexels.com/photos/730424/pexels-photo-730424.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 						description="Never write from scratch again. Go from idea to blog in minutes."
 					/>
 					<ProductItem
 						title="Rogue"
-						href="https://userogue.com"
-						src="https://res.cloudinary.com/algochurn/image/upload/v1700109139/framer%20motion%20components/356shots_so_hwpzvs.png"
+						href="#"
+						src="https://images.pexels.com/photos/745243/pexels-photo-745243.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 						description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
 					/>
 				</div>
 			</MenuItem>
 			<MenuItem {active} item="Pricing">
 				<div class="flex flex-col space-y-4 text-sm">
-					<HoveredLink href="/hobby">Hobby</HoveredLink>
-					<HoveredLink href="/individual">Individual</HoveredLink>
-					<HoveredLink href="/team">Team</HoveredLink>
-					<HoveredLink href="/enterprise">Enterprise</HoveredLink>
+					<HoveredLink href="#">Hobby</HoveredLink>
+					<HoveredLink href="#">Individual</HoveredLink>
+					<HoveredLink href="#">Team</HoveredLink>
+					<HoveredLink href="#">Enterprise</HoveredLink>
 				</div>
 			</MenuItem>
 		</NavbarMenu>
@@ -136,7 +136,7 @@ component: true
 	export let item: string;
 </script>
 
-<div on:mouseenter={() => (active = item)} class="relative">
+<div on:mouseenter={() => (active = item)} on:mouseleave={() => (active = null)} class="relative">
 	<Motion let:motion transition={{ duration: 0.3 }}>
 		<p use:motion class="cursor-pointer text-black hover:opacity-[0.9] dark:text-white">
 			{item}
@@ -145,13 +145,13 @@ component: true
 	{#if active !== null}
 		<Motion
 			let:motion
-			initial={{ opacity: 0, scale: 0.85, y: 10 }}
+			initial={{ opacity: 0, scale: 0.85, y: 0 }}
 			animate={{ opacity: 1, scale: 1, y: 0 }}
 			{transition}
 		>
 			<div use:motion>
 				{#if active === item}
-					<div class="absolute left-1/2 top-[calc(100%_+_1.7rem)] -translate-x-1/2 transform">
+					<div class="absolute left-1/2 -translate-x-1/2 transform pt-4">
 						<Motion let:motion {transition} layoutId="active">
 							<div
 								use:motion
@@ -177,22 +177,8 @@ component: true
 <CodeBlock path='src/lib/components/ui/NavbarMenu/NavbarMenu.svelte'>
 
 ```svelte
-<script lang="ts">
-	export let active: string | null;
-
-	const transition = {
-		type: 'spring',
-		mass: 0.5,
-		damping: 11.5,
-		stiffness: 100,
-		restDelta: 0.001,
-		restSpeed: 0.001
-	};
-</script>
-
 <nav
-	on:mouseleave={() => (active = null)}
-	class="boder relative flex justify-center space-x-4 rounded-full border-transparent bg-white px-8 py-6 shadow-input dark:border-white/[0.2] dark:bg-black"
+	class="boder relative flex justify-center space-x-4 rounded-full bg-black px-8 py-6 shadow-input dark:border-white/[0.2]"
 >
 	<slot />
 </nav>
