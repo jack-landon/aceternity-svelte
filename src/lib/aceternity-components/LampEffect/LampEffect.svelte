@@ -1,11 +1,30 @@
 <script lang="ts">
-	import { cn } from '@/utils';
 	import { Motion } from 'svelte-motion';
+	import { cn } from '@/utils';
+	import { inview } from 'svelte-inview';
+
+	let isInView: boolean;
 
 	export let className: string | undefined = undefined;
 </script>
 
 <div
+	use:inview={{}}
+	on:inview_change={(event) => {
+		const { inView, entry, scrollDirection, observer, node } = event.detail;
+		isInView = inView;
+	}}
+	on:inview_enter={(event) => {
+		const { inView, entry, scrollDirection, observer, node } = event.detail;
+		isInView = inView;
+	}}
+	on:inview_leave={(event) => {
+		const { inView, entry, scrollDirection, observer, node } = event.detail;
+		isInView = inView;
+	}}
+	on:inview_init={(event) => {
+		const { observer, node } = event.detail;
+	}}
 	class={cn(
 		'relative z-0 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-md bg-slate-950',
 		className
@@ -15,7 +34,7 @@
 		<Motion
 			let:motion
 			initial={{ opacity: 0.5, width: '15rem' }}
-			whileInView={{ opacity: 1, width: '30rem' }}
+			animate={{ opacity: 1, width: '30rem' }}
 			transition={{
 				delay: 0.3,
 				duration: 0.8,
@@ -40,7 +59,7 @@
 		<Motion
 			let:motion
 			initial={{ opacity: 0.5, width: '15rem' }}
-			whileInView={{ opacity: 1, width: '30rem' }}
+			animate={{ opacity: 1, width: '30rem' }}
 			transition={{
 				delay: 0.3,
 				duration: 0.8,
@@ -52,7 +71,6 @@
 		>
 			<div
 				use:motion
-				style="background-image: conic-gradient(var(--conic-position), var(--tw-gradient-stops));"
 				class="bg-gradient-conic absolute inset-auto left-1/2 h-56 w-[30rem] from-transparent via-transparent to-cyan-500 text-white [--conic-position:from_290deg_at_center_top]"
 			>
 				<div
@@ -73,7 +91,7 @@
 		<Motion
 			let:motion
 			initial={{ width: '8rem' }}
-			whileInView={{ width: '16rem' }}
+			animate={{ width: '16rem' }}
 			transition={{
 				delay: 0.3,
 				duration: 0.8,
@@ -88,7 +106,7 @@
 		<Motion
 			let:motion
 			initial={{ width: '15rem' }}
-			whileInView={{ width: '30rem' }}
+			animate={{ width: '30rem' }}
 			transition={{
 				delay: 0.3,
 				duration: 0.8,

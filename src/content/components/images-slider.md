@@ -54,7 +54,7 @@ component: true
 			duration: 0.6
 		}}
 	>
-		<div use:motion class="z-50 flex flex-col items-center justify-center">
+		<div use:motion class="z-50 flex flex-col items-center justify-center px-8">
 			<Motion let:motion>
 				<p
 					use:motion
@@ -95,9 +95,9 @@ component: true
 
 ```svelte
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import { AnimatePresence, Motion } from 'svelte-motion';
+	import { cn } from '@/utils';
 	import { onMount } from 'svelte';
+	import { Motion, AnimatePresence } from 'svelte-motion';
 
 	export let images: string[];
 	export let overlay = true;
@@ -110,64 +110,7 @@ component: true
 	let loading = false;
 	let loadedImages: string[] = [];
 
-	const handleNext = () => {
-		currentIndex = currentIndex + 1 === images.length ? 0 : currentIndex + 1;
-	};
-
-	const handlePrevious = () => {
-		currentIndex = currentIndex - 1 < 0 ? images.length - 1 : currentIndex - 1;
-	};
-
-	onMount(() => {
-		loadImages();
-	});
-
-	const loadImages = () => {
-		loading = true;
-		const loadPromises = images.map((image) => {
-			return new Promise((resolve, reject) => {
-				const img = new Image();
-				img.src = image;
-				img.onload = () => resolve(image);
-				img.onerror = reject;
-			});
-		});
-
-		Promise.all(loadPromises)
-			.then((loadedImagesFromPromise) => {
-				loadedImages = loadedImagesFromPromise as string[];
-				loading = false;
-				console.log(loadedImages);
-			})
-			.catch((error) => console.error('Failed to load images', error));
-	};
-
-	onMount(() => {
-		const handleKeyDown = (event: KeyboardEvent) => {
-			if (event.key === 'ArrowRight') {
-				handleNext();
-			} else if (event.key === 'ArrowLeft') {
-				handlePrevious();
-			}
-		};
-
-		window.addEventListener('keydown', handleKeyDown);
-
-		// autoplay
-		let interval: any;
-		if (autoplay) {
-			interval = setInterval(() => {
-				handleNext();
-			}, 5000);
-		}
-
-		return () => {
-			window.removeEventListener('keydown', handleKeyDown);
-			clearInterval(interval);
-		};
-	});
-
-	const slideVariants = {
+	const variants = {
 		initial: {
 			scale: 0,
 			opacity: 0,
@@ -197,6 +140,70 @@ component: true
 			}
 		}
 	};
+	const wrap = (a: number, l: number) => {
+		const u = a % l;
+		if (u < 0) {
+			return u + l;
+		}
+		return u;
+	};
+	let c = 1;
+
+	onMount(() => {
+		loadImages();
+	});
+
+	const loadImages = () => {
+		loading = true;
+		const loadPromises = images.map((image) => {
+			return new Promise((resolve, reject) => {
+				const img = new Image();
+				img.src = image;
+				img.onload = () => resolve(image);
+				img.onerror = reject;
+			});
+		});
+
+		Promise.all(loadPromises)
+			.then((loadedImagesFromPromise) => {
+				loadedImages = loadedImagesFromPromise as string[];
+				loading = false;
+			})
+			.catch((error) => console.error('Failed to load images', error));
+	};
+
+	onMount(() => {
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (event.key === 'ArrowRight') {
+				handleNext();
+			} else if (event.key === 'ArrowLeft') {
+				handlePrevious();
+			}
+		};
+
+		window.addEventListener('keydown', handleKeyDown);
+
+		// autoplay
+		let interval: any;
+		if (autoplay) {
+			interval = setInterval(() => {
+				handleNext();
+			}, 5000);
+		}
+
+		return () => {
+			window.removeEventListener('keydown', handleKeyDown);
+			clearInterval(interval);
+		};
+	});
+
+	const handleNext = () => {
+		currentIndex = currentIndex + 1 === images.length ? 0 : currentIndex + 1;
+	};
+
+	const handlePrevious = () => {
+		currentIndex = currentIndex - 1 < 0 ? images.length - 1 : currentIndex - 1;
+	};
 
 	$: areImagesLoaded = loadedImages.length > 0;
 </script>
@@ -213,23 +220,30 @@ component: true
 		<div class={cn('absolute inset-0 z-40 bg-black/60', overlayClassName)} />
 	{/if}
 
-	{#if areImagesLoaded}
-		<AnimatePresence>
-			<Motion
-				let:motion
-				initial={'initial'}
-				animate={'animate'}
-				exit={direction === 'up' ? 'upExit' : 'downExit'}
-				variants={slideVariants}
-			>
-				<img
-					use:motion
-					src={loadedImages[currentIndex]}
-					class="image absolute inset-0 h-full w-full object-cover object-center"
-				/>
-			</Motion>
-		</AnimatePresence>
-	{/if}
+	<AnimatePresence
+		list={[{ key: currentIndex, text: images[wrap(currentIndex, images.length)] }]}
+		let:item
+	>
+		<Motion
+			let:motion
+			custom={c}
+			{variants}
+			initial="initial"
+			animate="visible"
+			exit={direction === 'up' ? 'upExit' : 'downExit'}
+			transition={{
+				x: { type: 'spring', stiffness: 300, damping: 30 },
+				opacity: { duration: 0.2 }
+			}}
+		>
+			<img
+				use:motion
+				src={item.text}
+				alt="example"
+				class="image absolute inset-0 h-full w-full object-cover object-center"
+			/>
+		</Motion>
+	</AnimatePresence>
 </div>
 ```
 

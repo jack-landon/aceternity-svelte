@@ -24,7 +24,7 @@
 			duration: 0.6
 		}}
 	>
-		<div use:motion class="z-50 flex flex-col items-center justify-center">
+		<div use:motion class="z-50 flex flex-col items-center justify-center px-8">
 			<Motion let:motion>
 				<p
 					use:motion
