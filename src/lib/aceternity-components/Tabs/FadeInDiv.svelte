@@ -5,13 +5,12 @@
 	type Tab = {
 		title: string;
 		value: string;
-		content?: string | any;
+		content?: any | undefined;
 	};
 
 	export let className: string | undefined = undefined;
 	export let tabs: Tab[];
-	export let active: Tab;
-	export let hovering: boolean | undefined = undefined;
+	export let hovering: boolean | undefined;
 
 	const isActive = (tab: Tab) => {
 		return tab.value === tabs[0].value;
@@ -23,17 +22,15 @@
 		<Motion
 			let:motion
 			layoutId={tab.value}
-			style={{
-				scale: 1 - idx * 0.1,
-				top: hovering ? idx * -50 : 0,
-				zIndex: -idx,
-				opacity: idx < 3 ? 1 - idx * 0.1 : 0
-			}}
 			animate={{
 				y: isActive(tab) ? [0, 40, 0] : 0
 			}}
 		>
-			<div use:motion class={cn('absolute left-0 top-0 h-full w-full', className)}>
+			<div
+				use:motion
+				style={`scale: ${1 - idx * 0.1}; top: ${hovering ? `${idx * -60}px` : 0}; z-index: ${-idx}; opacity: ${idx < 3 ? 1 - idx * 0.1 : 0};`}
+				class={cn('absolute left-0 top-0 h-full w-full overflow-hidden', className)}
+			>
 				{@html tab.content}
 			</div>
 		</Motion>

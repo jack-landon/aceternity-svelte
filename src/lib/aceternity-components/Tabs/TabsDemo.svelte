@@ -36,7 +36,10 @@
 </script>
 
 <div
-	class="b relative mx-auto my-40 flex h-[20rem] w-full max-w-5xl flex-col items-start justify-start [perspective:1000px] md:h-[40rem]"
+	class="relative mx-auto mb-24 flex h-[20rem] w-[80vw] max-w-5xl flex-col items-start justify-start [perspective:1000px] md:h-[40rem] lg:w-[60vw]"
 >
-	<Tabs propTabs={tabs} />
+	<Tabs
+		propTabs={tabs}
+		contentClassName="rounded-2xl bg-gradient-to-br from-purple-700 to-violet-900 p-10 text-xl font-bold md:text-4xl mt-24"
+	/>
 </div>

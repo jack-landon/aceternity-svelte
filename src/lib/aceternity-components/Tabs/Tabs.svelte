@@ -67,10 +67,4 @@
 		</button>
 	{/each}
 </div>
-<FadeInDiv
-	{tabs}
-	{active}
-	key={active.value}
-	{hovering}
-	className={cn('mt-32', contentClassName)}
-/>
+<FadeInDiv {tabs} {hovering} className={cn('', contentClassName)} />

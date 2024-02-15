@@ -1,16 +1,24 @@
 <script lang="ts">
-	import { Motion, useTransform, useElementScroll, useVelocity, useSpring } from 'svelte-motion';
-	import { cn } from '$lib/utils';
+	import {
+		Motion,
+		useTransform,
+		useElementScroll,
+		useVelocity,
+		useSpring,
+		useViewportScroll
+	} from 'svelte-motion';
+	import { cn } from '@/utils';
 	import { onMount } from 'svelte';
 
 	export let className: string | undefined = undefined;
 
-	const { scrollYProgress } = useElementScroll({});
+	let ref: HTMLDivElement;
+
+	const { scrollYProgress } = useViewportScroll();
 
 	// track velocity of scroll to increase or decrease distance between svg gradient y coordinates.
 	const scrollYProgressVelocity = useVelocity(scrollYProgress);
 	let velo = 0;
-
 	let contentRef: HTMLDivElement;
 
 	let svgHeight = 0;
@@ -38,7 +46,7 @@
 </script>
 
 <Motion let:motion>
-	<div use:motion class={cn('relative mx-auto h-full w-full max-w-4xl', className)}>
+	<div use:motion bind:this={ref} class={cn('relative mx-auto h-full w-full max-w-4xl', className)}>
 		<div class="absolute -left-20 top-3">
 			<Motion
 				let:motion
@@ -47,7 +55,7 @@
 					delay: 0.5
 				}}
 				animate={{
-					boxShadow: scrollYProgress.get() > 0 ? 'none' : 'rgba(0, 0, 0, 0.24) 0px 3px 8px'
+					boxShadow: $scrollYProgress > 0 ? 'none' : 'rgba(0, 0, 0, 0.24) 0px 3px 8px'
 				}}
 			>
 				<div
@@ -61,8 +69,8 @@
 							delay: 0.5
 						}}
 						animate={{
-							backgroundColor: scrollYProgress.get() > 0 ? 'white' : 'var(--emerald-500)',
-							borderColor: scrollYProgress.get() > 0 ? 'white' : 'var(--emerald-600)'
+							backgroundColor: $scrollYProgress > 0 ? 'white' : 'var(--emerald-500)',
+							borderColor: $scrollYProgress > 0 ? 'white' : 'var(--emerald-600)'
 						}}
 					>
 						<div use:motion class="h-2 w-2 rounded-full border border-neutral-300 bg-white" />
@@ -77,8 +85,8 @@
 				aria-hidden="true"
 			>
 				<Motion
-					let:motion
 					isSVG
+					let:motion
 					transition={{
 						duration: 10
 					}}
@@ -92,8 +100,8 @@
 					></path>
 				</Motion>
 				<Motion
-					let:motion
 					isSVG
+					let:motion
 					transition={{
 						duration: 10
 					}}
@@ -108,15 +116,15 @@
 					></path>
 				</Motion>
 				<defs>
-					<Motion let:motion isSVG>
+					<Motion let:motion>
 						<linearGradient
 							use:motion
 							id="gradient"
 							gradientUnits="userSpaceOnUse"
 							x1="0"
 							x2="0"
-							{y1}
-							{y2}
+							y1={$y1}
+							y2={$y2}
 						>
 							<stop stop-color="#18CCFC" stop-opacity="0"></stop>
 							<stop stop-color="#18CCFC"></stop>

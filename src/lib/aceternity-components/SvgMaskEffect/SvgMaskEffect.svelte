@@ -24,7 +24,7 @@
 		};
 	});
 
-	let maskSize = isHovered ? revealSize : size;
+	$: maskSize = isHovered ? revealSize : size;
 </script>
 
 <Motion

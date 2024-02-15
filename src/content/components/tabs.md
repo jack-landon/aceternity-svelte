@@ -72,9 +72,12 @@ component: true
 </script>
 
 <div
-	class="b relative mx-auto my-40 flex h-[20rem] w-full max-w-5xl flex-col items-start justify-start [perspective:1000px] md:h-[40rem]"
+	class="relative mx-auto mb-24 flex h-[20rem] w-[80vw] max-w-5xl flex-col items-start justify-start [perspective:1000px] md:h-[40rem] lg:w-[60vw]"
 >
-	<Tabs propTabs={tabs} />
+	<Tabs
+		propTabs={tabs}
+		contentClassName="rounded-2xl bg-gradient-to-br from-purple-700 to-violet-900 p-10 text-xl font-bold md:text-4xl mt-24"
+	/>
 </div>
 ```
 
@@ -165,7 +168,7 @@ component: true
 		</button>
 	{/each}
 </div>
-<FadeInDiv {tabs} {active} {hovering} className={cn('mt-32', contentClassName)} />
+<FadeInDiv {tabs} {hovering} className={cn('', contentClassName)} />
 ```
 
 </CodeBlock>
@@ -180,13 +183,12 @@ component: true
 	type Tab = {
 		title: string;
 		value: string;
-		content?: string | any;
+		content?: any | undefined;
 	};
 
 	export let className: string | undefined = undefined;
 	export let tabs: Tab[];
-	export let active: Tab;
-	export let hovering: boolean | undefined = undefined;
+	export let hovering: boolean | undefined;
 
 	const isActive = (tab: Tab) => {
 		return tab.value === tabs[0].value;
@@ -198,17 +200,15 @@ component: true
 		<Motion
 			let:motion
 			layoutId={tab.value}
-			style={{
-				scale: 1 - idx * 0.1,
-				top: hovering ? idx * -50 : 0,
-				zIndex: -idx,
-				opacity: idx < 3 ? 1 - idx * 0.1 : 0
-			}}
 			animate={{
 				y: isActive(tab) ? [0, 40, 0] : 0
 			}}
 		>
-			<div use:motion class={cn('absolute left-0 top-0 h-full w-full', className)}>
+			<div
+				use:motion
+				style={`scale: ${1 - idx * 0.1}; top: ${hovering ? `${idx * -60}px` : 0}; z-index: ${-idx}; opacity: ${idx < 3 ? 1 - idx * 0.1 : 0};`}
+				class={cn('absolute left-0 top-0 h-full w-full overflow-hidden', className)}
+			>
 				{@html tab.content}
 			</div>
 		</Motion>
