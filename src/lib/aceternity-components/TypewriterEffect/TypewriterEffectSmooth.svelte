@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import { text } from '@sveltejs/kit';
+	import { cn } from '@/utils';
 	import { Motion } from 'svelte-motion';
 
 	export let words: {
@@ -10,6 +9,7 @@
 	export let className: string | undefined = undefined;
 	export let cursorClassName: string | undefined = undefined;
 
+	// split text inside of words into array of characters
 	const wordsArray = words.map((word) => {
 		return {
 			...word,
@@ -21,11 +21,11 @@
 <div class={cn('my-6 flex space-x-1', className)}>
 	<Motion
 		let:motion
-		style={{
-			width: 'fit-content'
-		}}
 		initial={{
 			width: '0%'
+		}}
+		animate={{
+			width: 'fit-content'
 		}}
 		transition={{
 			duration: 2,
@@ -36,7 +36,7 @@
 		<div use:motion class="overflow-hidden">
 			<div
 				class="lg:text:3xl text-xs font-bold sm:text-base md:text-xl xl:text-5xl"
-				style="white-space: nowrap;"
+				style="white-space: nowrap"
 			>
 				<div>
 					{#each wordsArray as word, idx (`word-${idx}`)}
@@ -50,6 +50,7 @@
 						</div>
 					{/each}
 				</div>
+
 				{' '}
 			</div>
 			{' '}

@@ -9,6 +9,7 @@ component: true
     import InstallDependenciesCodeBlock from '$lib/components/InstallDependenciesCodeBlock.svelte'
     import AddCnUtilCodeBlock from '$lib/components/AddCnUtilCodeBlock.svelte'
     import TypewriterEffectDemo from '$lib/aceternity-components/TypewriterEffect/TypewriterEffectDemo.svelte'
+	import TypewriterEffectSmoothDemo from '$lib/aceternity-components/TypewriterEffect/TypewriterEffectSmoothDemo.svelte'
 
     let props = [
         {name: 'words', type: '{text: string, className?: string}', description: 'Every word with a className that you can define'},
@@ -19,7 +20,7 @@ component: true
 
 <DocsPreview>
 <div slot='preview'>
-<TypewriterEffectDemo />
+<TypewriterEffectSmoothDemo />
 </div>
 
 <div slot='code'>

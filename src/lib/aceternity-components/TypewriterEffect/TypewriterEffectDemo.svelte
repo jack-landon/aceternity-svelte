@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TypewriterEffectSmooth from './TypewriterEffectSmooth.svelte';
+	import TypewriterEffect from './TypewriterEffect.svelte';
 
 	const words = [
 		{
@@ -22,11 +22,11 @@
 </script>
 
 <div class="flex h-[40rem] flex-col items-center justify-center">
-	<p class="text-xs text-neutral-600 dark:text-neutral-200 sm:text-base">
+	<p class="mb-10 text-base text-neutral-600 dark:text-neutral-200">
 		The road to freedom starts from here
 	</p>
-	<TypewriterEffectSmooth {words} />
-	<div class="flex flex-col space-x-0 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+	<TypewriterEffect {words} />
+	<div class="mt-10 flex flex-col space-x-0 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
 		<button
 			class="h-10 w-40 rounded-xl border border-transparent bg-black text-sm text-white dark:border-white"
 		>

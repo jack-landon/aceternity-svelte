@@ -1,15 +1,10 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
 	import { Motion } from 'svelte-motion';
-
-	export let words: {
-		text: string;
-		className?: string;
-	}[];
-	export let className: string | undefined = undefined;
-	export let cursorClassName: string | undefined = undefined;
-
-	const wordsArray = words.map((word) => {
+	export let words;
+	export let className = void 0;
+	export let cursorClassName = void 0;
+	const wordsArray = words.map((word: any) => {
 		return {
 			...word,
 			text: word.text.split('')
