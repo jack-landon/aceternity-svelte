@@ -54,7 +54,7 @@ component: true
           adipisicing aliquip proident officia sunt.
         </p>
     `,
-			badge: 'React',
+			badge: 'Svelte',
 			image:
 				'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 		},
@@ -99,7 +99,7 @@ component: true
 	];
 </script>
 
-<TracingBeam className="">
+<TracingBeam>
 	<div class="relative mx-auto max-w-2xl pt-4 antialiased">
 		{#each dummyContent as item, index (`content-${index}`)}
 			<div class="mb-10">
@@ -111,7 +111,7 @@ component: true
 					{item.title}
 				</p>
 
-				<div class="prose prose-sm dark:prose-invert text-sm">
+				<div class="prose prose-sm text-sm dark:prose-invert">
 					{#if item?.image}
 						<img
 							src={item.image}
@@ -178,137 +178,111 @@ function addVariablesForColors({ addBase, theme }: any) {
 
 ```svelte
 <script lang="ts">
-	import { Motion, useTransform, useElementScroll, useVelocity, useSpring } from 'svelte-motion';
-	import { cn } from '$lib/utils';
 	import { onMount } from 'svelte';
-
-	export let className: string | undefined = undefined;
-
-	const { scrollYProgress } = useElementScroll({});
-
-	// track velocity of scroll to increase or decrease distance between svg gradient y coordinates.
-	const scrollYProgressVelocity = useVelocity(scrollYProgress);
-	let velo = 0;
-
-	let contentRef: HTMLDivElement;
+	import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
 
 	let svgHeight = 0;
+	let velo = 0;
+	let y1 = tweened(50, { duration: 500, easing: cubicOut });
+	let y2 = tweened(50, { duration: 500, easing: cubicOut });
+	let scrollYProgress = 0;
+	let scrollYProgressVelocity = 0;
+	let ref: HTMLDivElement;
+	let contentRef: HTMLDivElement;
 
 	onMount(() => {
-		if (contentRef) {
+		if (typeof window !== 'undefined') {
 			svgHeight = contentRef.offsetHeight;
+			window.addEventListener('scroll', handleScroll);
 		}
+		return () => {
+			if (typeof window !== 'undefined') {
+				window.removeEventListener('scroll', handleScroll);
+			}
+		};
 	});
 
-	onMount(() => {
-		return scrollYProgressVelocity.onChange((latestVelocity) => {
-			velo = latestVelocity;
-		});
-	});
+	$: {
+		if (typeof window !== 'undefined') {
+			scrollYProgress = window.scrollY / document.body.offsetHeight;
+			scrollYProgressVelocity = scrollYProgress - scrollYProgressVelocity;
+			velo = scrollYProgressVelocity;
+			y1.set(scrollYProgress * (svgHeight - velo * 500));
+			y2.set(scrollYProgress * (svgHeight - velo * 2000));
+		}
+	}
 
-	const y1 = useSpring(useTransform(scrollYProgress, [0, 0.8], [50, svgHeight - velo * 500]), {
-		stiffness: 500,
-		damping: 90
-	});
-	const y2 = useSpring(useTransform(scrollYProgress, [0, 1], [50, svgHeight - velo * 2000]), {
-		stiffness: 500,
-		damping: 90
-	});
+	let ticking = false;
+	function handleScroll() {
+		if (!ticking) {
+			if (typeof window !== 'undefined') {
+				window.requestAnimationFrame(() => {
+					scrollYProgress = window.scrollY / document.body.offsetHeight;
+					ticking = false;
+				});
+				ticking = true;
+			}
+		}
+	}
 </script>
 
-<Motion let:motion>
-	<div use:motion class={cn('relative mx-auto h-full w-full max-w-4xl', className)}>
-		<div class="absolute -left-20 top-3">
-			<Motion
-				let:motion
-				transition={{
-					duration: 0.2,
-					delay: 0.5
-				}}
-				animate={{
-					boxShadow: scrollYProgress.get() > 0 ? 'none' : 'rgba(0, 0, 0, 0.24) 0px 3px 8px'
-				}}
-			>
-				<div
-					use:motion
-					class="border-netural-200 ml-[27px] flex h-4 w-4 items-center justify-center rounded-full border shadow-sm"
-				>
-					<Motion
-						let:motion
-						transition={{
-							duration: 0.2,
-							delay: 0.5
-						}}
-						animate={{
-							backgroundColor: scrollYProgress.get() > 0 ? 'white' : 'var(--emerald-500)',
-							borderColor: scrollYProgress.get() > 0 ? 'white' : 'var(--emerald-600)'
-						}}
-					>
-						<div use:motion class="h-2 w-2 rounded-full border border-neutral-300 bg-white" />
-					</Motion>
-				</div>
-			</Motion>
-			<svg
-				viewBox={`0 0 20 ${svgHeight}`}
-				width="20"
-				height={svgHeight}
-				class=" ml-4 hidden lg:block"
-				aria-hidden="true"
-			>
-				<Motion
-					let:motion
-					isSVG
-					transition={{
-						duration: 10
-					}}
-				>
-					<path
-						use:motion
-						d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`}
-						fill="none"
-						stroke="#9091A0"
-						stroke-opacity="0.16"
-					></path>
-				</Motion>
-				<Motion
-					let:motion
-					isSVG
-					transition={{
-						duration: 10
-					}}
-				>
-					<path
-						use:motion
-						d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`}
-						fill="none"
-						stroke="url(#gradient)"
-						stroke-width="1.25"
-						class="motion-reduce:hidden"
-					></path>
-				</Motion>
-				<defs>
-					<Motion let:motion isSVG>
-						<linearGradient
-							use:motion
-							id="gradient"
-							gradientUnits="userSpaceOnUse"
-							x1="0"
-							x2="0"
-							{y1}
-							{y2}
-						>
-							<stop stop-color="#18CCFC" stop-opacity="0"></stop>
-							<stop stop-color="#18CCFC"></stop>
-							<stop offset="0.325" stop-color="#6344F5"></stop>
-							<stop offset="1" stop-color="#AE48FF" stop-opacity="0"></stop>
-						</linearGradient>
-					</Motion>
-				</defs>
-			</svg>
+<div bind:this={ref} class="relative mx-auto h-full w-full max-w-4xl">
+	<div class="absolute -left-20 top-3">
+		<div
+			class="border-netural-200 ml-[27px] flex h-4 w-4 items-center justify-center rounded-full border shadow-sm"
+			style="box-shadow: {scrollYProgress > 0 ? 'none' : 'rgba(0, 0, 0, 0.24) 0px 3px 8px'}"
+		>
+			<div
+				class="h-2 w-2 rounded-full border border-neutral-300 bg-white"
+				style="background-color: {scrollYProgress > 0
+					? 'white'
+					: 'var(--emerald-500)'}; border-color: {scrollYProgress > 0
+					? 'white'
+					: 'var(--emerald-600)'}"
+			/>
 		</div>
-		<div bind:this={contentRef}><slot /></div>
+		<svg
+			viewBox={`0 0 20 ${svgHeight}`}
+			width="20"
+			height={svgHeight}
+			class=" ml-4 hidden lg:block"
+			aria-hidden="true"
+		>
+			<path
+				d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`}
+				fill="none"
+				stroke="#9091A0"
+				stroke-opacity="0.16"
+			/>
+			<path
+				d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`}
+				fill="none"
+				stroke="url(#gradient)"
+				stroke-width="4"
+				class="motion-reduce:hidden"
+			/>
+			<defs>
+				<linearGradient
+					id="gradient"
+					gradientUnits="userSpaceOnUse"
+					x1="0"
+					x2="0"
+					y1={$y1}
+					y2={$y2}
+				>
+					<stop stop-color="#18CCFC" stop-opacity="0"></stop>
+					<stop stop-color="#18CCFC"></stop>
+					<stop offset="0.325" stop-color="#6344F5"></stop>
+					<stop offset="1" stop-color="#AE48FF" stop-opacity="0"></stop>
+				</linearGradient>
+			</defs>
+		</svg>
 	</div>
-</Motion>
+	<div bind:this={contentRef}>
+		<slot />
+	</div>
+</div>
 ```
 
 </CodeBlock>

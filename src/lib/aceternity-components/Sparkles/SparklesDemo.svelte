@@ -25,10 +25,9 @@
 
 		<!-- Core component -->
 		<Sparkles
-			background="transparent"
-			minSize={0.4}
-			maxSize={1}
-			particleDensity={1200}
+			minSize={0.8}
+			maxSize={2}
+			particleDensity={300}
 			className="w-full h-full"
 			particleColor="#FFFFFF"
 		/>

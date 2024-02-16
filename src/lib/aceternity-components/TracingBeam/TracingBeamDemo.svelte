@@ -30,7 +30,7 @@
           adipisicing aliquip proident officia sunt.
         </p>
     `,
-			badge: 'React',
+			badge: 'Svelte',
 			image:
 				'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 		},
@@ -75,7 +75,7 @@
 	];
 </script>
 
-<TracingBeam className="">
+<TracingBeam>
 	<div class="relative mx-auto max-w-2xl pt-4 antialiased">
 		{#each dummyContent as item, index (`content-${index}`)}
 			<div class="mb-10">
@@ -87,7 +87,7 @@
 					{item.title}
 				</p>
 
-				<div class="prose prose-sm dark:prose-invert text-sm">
+				<div class="prose prose-sm text-sm dark:prose-invert">
 					{#if item?.image}
 						<img
 							src={item.image}

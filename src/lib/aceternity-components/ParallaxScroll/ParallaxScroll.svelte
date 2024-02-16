@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { useElementScroll, useTransform, Motion } from 'svelte-motion';
+	import { useViewportScroll, useTransform, Motion } from 'svelte-motion';
 	import { cn } from '$lib/utils';
 
 	export let images: string[];
@@ -7,12 +7,7 @@
 
 	let gridRef: HTMLDivElement;
 
-	const { scrollYProgress } = useElementScroll(gridRef);
-
-	// const { scrollYProgress } = useScroll({
-	// 	container: gridRef, // remove this if your container is not fixed height
-	// 	offset: ['start start', 'end start'] // remove this if your container is not fixed height
-	// });
+	const { scrollYProgress } = useViewportScroll();
 
 	const translateFirst = useTransform(scrollYProgress, [0, 1], [0, -200]);
 	const translateSecond = useTransform(scrollYProgress, [0, 1], [0, 200]);
@@ -25,7 +20,7 @@
 	const thirdPart = images.slice(2 * third);
 </script>
 
-<div class={cn('h-[40rem] w-full items-start overflow-y-auto', className)} bind:this={gridRef}>
+<div class={cn('w-full items-start overflow-y-auto', className)} bind:this={gridRef}>
 	<div
 		class="mx-auto grid max-w-5xl grid-cols-1 items-start gap-10 px-10 py-40 md:grid-cols-2 lg:grid-cols-3"
 		bind:this={gridRef}
