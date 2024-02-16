@@ -1,30 +1,41 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { Motion, useMotionTemplate, useMotionValue, useTransform } from 'svelte-motion';
+	import { onMount, onDestroy } from 'svelte';
 	import { writable } from 'svelte/store';
 
-	export let duration: number = 2000;
-	export let rx: string | undefined = undefined;
-	export let ry: string | undefined = undefined;
+	export let duration = 2000;
+	export let rx = '0';
+	export let ry = '0';
 
-	let pathRef: SVGPathElement;
+	let pathElement: SVGRectElement;
+	let progress = writable(0);
 
-	let progress = useMotionValue<number>(0);
-
-	$: $progress, console.log($progress);
-
-	progress.onChange((time: number) => {
-		const length = pathRef.getTotalLength();
-		if (length) {
+	let animationFrameId: number;
+	onMount(() => {
+		const animate = (time: number) => {
+			const length = pathElement.getTotalLength();
 			const pxPerMillisecond = length / duration;
-			progress.set((time * pxPerMillisecond) % length);
+			const newProgress = (time * pxPerMillisecond) % length;
+			progress.set(newProgress === 0 ? 0 : newProgress); // Reset progress to 0 instantly
+			animationFrameId = requestAnimationFrame(animate);
+		};
+		animationFrameId = requestAnimationFrame(animate);
+	});
+
+	onDestroy(() => {
+		if (typeof cancelAnimationFrame === 'function') {
+			cancelAnimationFrame(animationFrameId);
 		}
 	});
 
-	let x = useTransform(progress, (val) => pathRef?.getPointAtLength(val).x);
-	let y = useTransform(progress, (val) => pathRef?.getPointAtLength(val).y);
+	let x = 0;
+	let y = 0;
+	$: if (pathElement) {
+		const point = pathElement.getPointAtLength($progress);
+		x = point.x;
+		y = point.y;
+	}
 
-	const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
+	$: transform = `translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
 </script>
 
 <svg
@@ -33,21 +44,10 @@
 	class="absolute h-full w-full"
 	width="100%"
 	height="100%"
-	{...$$props}
 >
-	<rect fill="none" width="100%" height="100%" {rx} {ry} bind:this={pathRef} />
+	<rect bind:this={pathElement} fill="none" width="100%" height="100%" {rx} {ry} />
 </svg>
-<Motion
-	let:motion
-	style={{
-		position: 'absolute',
-		top: 0,
-		left: 0,
-		display: 'inline-block',
-		transform
-	}}
->
-	<div use:motion>
-		<slot />
-	</div>
-</Motion>
+
+<div style="position: absolute; top: 0; left: 0; display: inline-block;" style:transform>
+	<slot />
+</div>

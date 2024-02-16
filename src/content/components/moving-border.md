@@ -28,16 +28,16 @@ component: true
 
 ```svelte
 <script lang="ts">
-	import MovingBorder from './MovingBorder.svelte';
+	import Button from './Button.svelte';
 </script>
 
 <div>
-	<MovingBorder
+	<Button
 		borderRadius="1.75rem"
 		className="bg-white dark:bg-slate-900 text-black dark:text-white border-neutral-200 dark:border-slate-800"
 	>
 		Borders are cool
-	</MovingBorder>
+	</Button>
 </div>
 ```
 
@@ -60,43 +60,74 @@ component: true
 
 ```svelte
 <script lang="ts">
-	import { cn } from '$lib/utils';
-	import {
-		Motion,
-		useAnimation,
-		useMotionTemplate,
-		useMotionValue,
-		useTransform,
-		useCycle
-	} from 'svelte-motion';
+	import { onMount, onDestroy } from 'svelte';
+	import { writable } from 'svelte/store';
+
+	export let duration = 2000;
+	export let rx = '0';
+	export let ry = '0';
+
+	let pathElement: SVGRectElement;
+	let progress = writable(0);
+
+	let animationFrameId: number;
+	onMount(() => {
+		const animate = (time: number) => {
+			const length = pathElement.getTotalLength();
+			const pxPerMillisecond = length / duration;
+			const newProgress = (time * pxPerMillisecond) % length;
+			progress.set(newProgress === 0 ? 0 : newProgress); // Reset progress to 0 instantly
+			animationFrameId = requestAnimationFrame(animate);
+		};
+		animationFrameId = requestAnimationFrame(animate);
+	});
+
+	onDestroy(() => {
+		if (typeof cancelAnimationFrame === 'function') {
+			cancelAnimationFrame(animationFrameId);
+		}
+	});
+
+	let x = 0;
+	let y = 0;
+	$: if (pathElement) {
+		const point = pathElement.getPointAtLength($progress);
+		x = point.x;
+		y = point.y;
+	}
+
+	$: transform = `translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
+</script>
+
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	preserveAspectRatio="none"
+	class="absolute h-full w-full"
+	width="100%"
+	height="100%"
+>
+	<rect bind:this={pathElement} fill="none" width="100%" height="100%" {rx} {ry} />
+</svg>
+
+<div style="position: absolute; top: 0; left: 0; display: inline-block;" style:transform>
+	<slot />
+</div>
+```
+
+</CodeBlock>
+
+<CodeBlock path='src/lib/components/ui/MovingBorder/Button.ts'>
+
+```svelte
+<script lang="ts">
+	import { cn } from '@/utils';
+	import MovingBorder from './MovingBorder.svelte';
 
 	export let borderRadius: string | undefined = '1.75rem';
 	export let containerClassName: string | undefined = undefined;
 	export let borderClassName: string | undefined = undefined;
-	export let duration: number = 2000;
+	export let duration: number | undefined = 2000;
 	export let className: string | undefined = undefined;
-
-	let rx = '30%';
-	let ry = '30%';
-
-	let pathRef: SVGPathElement;
-
-	let progress = useMotionValue<number>(0);
-
-	$: $progress, console.log($progress);
-
-	progress.onChange((time: number) => {
-		const length = pathRef.getTotalLength();
-		if (length) {
-			const pxPerMillisecond = length / duration;
-			progress.set((time * pxPerMillisecond) % length);
-		}
-	});
-
-	let x = useTransform(progress, (val) => pathRef?.getPointAtLength(val).x);
-	let y = useTransform(progress, (val) => pathRef?.getPointAtLength(val).y);
-
-	const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
 </script>
 
 <button
@@ -108,35 +139,14 @@ component: true
 	{...$$props}
 >
 	<div class="absolute inset-0" style={`border-radius: calc(${borderRadius} * 0.96);`}>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			preserveAspectRatio="none"
-			class="absolute h-full w-full"
-			width="100%"
-			height="100%"
-			{...$$props}
-		>
-			<rect fill="none" width="100%" height="100%" {rx} {ry} bind:this={pathRef} />
-		</svg>
-		<Motion
-			let:motion
-			style={{
-				position: 'absolute',
-				top: 0,
-				left: 0,
-				display: 'inline-block',
-				transform
-			}}
-		>
-			<div use:motion>
-				<div
-					class={cn(
-						'h-20 w-20 bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)] opacity-[0.8]',
-						borderClassName
-					)}
-				/>
-			</div>
-		</Motion>
+		<MovingBorder {duration} rx="30%" ry="30%">
+			<div
+				class={cn(
+					'h-20 w-20 bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)] opacity-[0.8]',
+					borderClassName
+				)}
+			/>
+		</MovingBorder>
 	</div>
 
 	<div
@@ -157,8 +167,9 @@ component: true
 
 ```ts
 import MovingBorder from './MovingBorder.svelte';
+import Button from './Button.svelte';
 
-export { MovingBorder };
+export { MovingBorder, Button };
 ```
 
 </CodeBlock>
