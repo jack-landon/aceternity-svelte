@@ -83,4 +83,6 @@
 	];
 </script>
 
-<HeroParallax {products} />
+<div class="container mx-auto w-[80vw] lg:w-[60vw]">
+	<HeroParallax {products} />
+</div>

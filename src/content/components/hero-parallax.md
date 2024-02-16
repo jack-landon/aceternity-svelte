@@ -111,7 +111,9 @@ component: true
 	];
 </script>
 
-<HeroParallax {products} />
+<div class="container mx-auto w-[80vw] lg:w-[60vw]">
+	<HeroParallax {products} />
+</div>
 ```
 
 </div>
@@ -139,7 +141,7 @@ component: true
 		thumbnail: string;
 	}[];
 
-	import { Motion, useElementScroll, useTransform, useSpring, MotionValue } from 'svelte-motion';
+	import { Motion, useTransform, useSpring, useViewportScroll } from 'svelte-motion';
 	import ProductCard from './ProductCard.svelte';
 
 	const firstRow = products.slice(0, 5);
@@ -147,12 +149,7 @@ component: true
 	const thirdRow = products.slice(10, 15);
 	let ref: HTMLDivElement | null = null;
 
-	const { scrollYProgress } = useElementScroll(ref); // Figure out how to add the offset
-
-	// const { scrollYProgress } = useScroll({
-	//   target: ref,
-	//   offset: ["start start", "end start"],
-	// });
+	const { scrollYProgress } = useViewportScroll();
 
 	const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
@@ -169,9 +166,9 @@ component: true
 
 <div
 	bind:this={ref}
-	class="relative flex h-[300vh] flex-col self-auto overflow-hidden py-40 antialiased [transform-style:preserve-3d] [perspective:1000px]"
+	class="relative flex h-[300vh] flex-col self-auto overflow-hidden py-4 antialiased [perspective:1000px] [transform-style:preserve-3d]"
 >
-	<div class="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-20 md:py-40">
+	<div class="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-8 md:py-4">
 		<h1 class="text-2xl font-bold dark:text-white md:text-7xl">
 			The Ultimate <br /> development studio
 		</h1>

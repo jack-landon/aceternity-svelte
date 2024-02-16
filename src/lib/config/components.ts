@@ -651,7 +651,7 @@ export const aceternityComponents = [
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
 		dateModified: '2024-02-13T01:00:00+10:00',
-		wip: true
+		wip: false
 	},
 	{
 		id: 'images-slider',
