@@ -28,7 +28,7 @@
 
 <Seo
 	title={`${details.name} Component - Aceternity UI Svelte (Free Source Code)`}
-	description={`${details.description} Add this premium animated component to your Svelte app for free. There's no package to install - simply copy-paste the source code.`}
+	description={`${details.description} Add this premium animated component to your Svelte app for free! 😎`}
 	authorName={'Jack Landon'}
 	dateModified={details.dateModified}
 	image={`https://aceternity.sveltekit.io${details.thumbnail.img.src}`}

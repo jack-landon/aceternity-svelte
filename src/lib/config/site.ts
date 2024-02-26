@@ -3,7 +3,7 @@ export const siteConfig = {
 	url: 'https://aceternity.sveltekit.io',
 	ogImage: 'https:/aceternity.sveltekit.io/og.png',
 	description:
-		'Add incredible animated components to your Svelte App for free. Make incredible landing pages in minutes by copy-pasting the source code of these 39 pre-made components.',
+		'Add incredible animated components to your Svelte App for free. Make incredible landing pages in minutes by copy-pasting the source code. 😎',
 	links: {
 		// twitter: 'https://twitter.com/huntabyte',
 		// github: 'https://github.com/huntabyte/shadcn-svelte',

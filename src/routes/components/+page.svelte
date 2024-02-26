@@ -8,7 +8,7 @@
 
 <Metadata
 	title="Components List - Aceternity UI Svelte (Free Source Code)"
-	description="Beautiful open-source animated components built with Svelte, Tailwind CSS and Svelte Motion. No need to install any packages - just copy & paste the source code."
+	description="Beautiful open-source animated components built with Svelte, Tailwind CSS and Svelte Motion. Just copy & paste the source code!"
 />
 
 <div>

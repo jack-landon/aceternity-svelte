@@ -5,7 +5,11 @@
 	export let title: string = siteConfig.name;
 	export let description: string = siteConfig.description;
 
-	$: title = $page.data?.title ? `${$page.data.title} - ${siteConfig.name}` : siteConfig.name;
+	$: title = title
+		? title
+		: $page.data?.title
+			? `${$page.data.title} - ${siteConfig.name}`
+			: siteConfig.name;
 </script>
 
 <svelte:head>
