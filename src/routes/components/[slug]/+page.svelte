@@ -27,14 +27,14 @@
 </script>
 
 <Seo
-	title={`${details.name} Component - Aceternity UI Svelte`}
-	description={`${details.description} Copy and paste the component and edit as you need.`}
+	title={`${details.name} Component - Aceternity UI Svelte (Free Source Code)`}
+	description={`${details.description} Add this premium animated component to your Svelte app for free. There's no package to install - simply copy-paste the source code.`}
 	authorName={'Jack Landon'}
 	dateModified={details.dateModified}
 	image={`https://aceternity.sveltekit.io${details.thumbnail.img.src}`}
 />
 
-<main class="prose dark:prose-invert !max-w-full py-12">
+<main class="prose !max-w-full py-12 dark:prose-invert">
 	<h1 class="text-4xl font-bold">{details.name}</h1>
 	<p class="mb-12 text-lg text-muted-foreground">
 		{#if details.wip}

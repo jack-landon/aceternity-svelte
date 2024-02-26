@@ -9,7 +9,7 @@
 	import { Metadata } from '$components/docs';
 </script>
 
-<Metadata />
+<Metadata title="Aceternity UI Svelte - Free Incredible Animated Components" />
 
 <div class="grid grid-cols-1 gap-4 px-4 md:grid-cols-2 md:px-7 md:py-12">
 	<div class="mt-16 flex flex-col text-center sm:text-start">

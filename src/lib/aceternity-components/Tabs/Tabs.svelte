@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from '@/utils';
-	import { AnimatePresence, Motion } from 'svelte-motion';
+	import { Motion } from 'svelte-motion';
 	import FadeInDiv from './FadeInDiv.svelte';
 
 	type Tab = {

@@ -3,14 +3,14 @@ export const siteConfig = {
 	url: 'https://aceternity.sveltekit.io',
 	ogImage: 'https:/aceternity.sveltekit.io/og.png',
 	description:
-		'Beautiful Tailwind CSS and Svelte Motion Components, built with Svelte and TypeScript.',
+		'Add incredible animated components to your Svelte App for free. Make incredible landing pages in minutes by copy-pasting the source code of these 39 pre-made components.',
 	links: {
 		// twitter: 'https://twitter.com/huntabyte',
 		// github: 'https://github.com/huntabyte/shadcn-svelte',
 		// shadTwitter: 'https://twitter.com/shadcn',
 		// shadGithub: 'https://github.com/shadcn/ui'
 	},
-	keywords: `aceternity,Svelte,SvelteKit,Svelte Components,TailwindCSS,shadcn,Framer Motion`
+	keywords: `aceternity,Svelte,SvelteKit,Svelte Components,TailwindCSS,Svelte Motion,Framer Motion,shadcn`
 };
 
 export type SiteConfig = typeof siteConfig;
