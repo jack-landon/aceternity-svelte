@@ -21,6 +21,7 @@ import ImagesSliderImage from '$lib/assets/component-preview-images/images-slide
 import InfiniteMovingCardsImage from '$lib/assets/component-preview-images/infinite-moving-cards.png?enhanced';
 import LampEffectImage from '$lib/assets/component-preview-images/lamp-effect.png?enhanced';
 import LayoutGridImage from '$lib/assets/component-preview-images/layout-grid.png?enhanced';
+import MacbookScrollImage from '$lib/assets/component-preview-images/macbook-scroll.webp?enhanced';
 import MeteorsImage from '$lib/assets/component-preview-images/meteors.png?enhanced';
 import MovingBorderImage from '$lib/assets/component-preview-images/moving-border.png?enhanced';
 import NavbarMenuImage from '$lib/assets/component-preview-images/navbar-menu.png?enhanced';
@@ -382,6 +383,7 @@ export const aceternityComponentsIds = [
 	'infinite-moving-cards',
 	'lamp-effect',
 	'layout-grid',
+	'macbook-scroll',
 	'meteors',
 	'moving-border',
 	'navbar-menu',
@@ -706,6 +708,19 @@ export const aceternityComponents = [
 		props: [{ name: 'className', type: 'string', description: '' }],
 		dateModified: '2024-02-13T01:00:00+10:00',
 		wip: true
+	},
+	{
+		id: 'macbook-scroll',
+		name: 'Macbook Scroll',
+		description: 'Scroll through the page and see the image come out of the screen.',
+		thumbnail: MacbookScrollImage,
+		video: '',
+		file: 'meteors.md',
+		disabled: false,
+		dependencies: ['svelte-motion'],
+		props: [{ name: 'className', type: 'string', description: '' }],
+		dateModified: '2024-03-01T23:00:00+10:00',
+		wip: false
 	},
 	{
 		id: 'meteors',

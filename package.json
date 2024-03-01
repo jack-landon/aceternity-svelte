@@ -41,6 +41,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@tabler/icons-svelte": "^2.47.0",
 		"@tsparticles/engine": "^3.2.1",
 		"@tsparticles/slim": "^3.2.1",
 		"@tsparticles/svelte": "^3.0.0",

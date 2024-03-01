@@ -49,7 +49,7 @@ component: true
 
 ### Install Dependencies
 
-<InstallDependenciesCodeBlock />
+<InstallDependenciesCodeBlock dependencies={['svelte-motion', 'clsx', 'tailwind-merge']} />
 
 ### Add util file
 

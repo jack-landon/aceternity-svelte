@@ -55,7 +55,7 @@ component: true
 
 ### Install Dependencies
 
-<InstallDependenciesCodeBlock />
+<InstallDependenciesCodeBlock dependencies={['svelte-motion', 'clsx', 'tailwind-merge', 'svelte-inview']} />
 
 ### Add util file
 
