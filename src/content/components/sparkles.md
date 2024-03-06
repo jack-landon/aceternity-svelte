@@ -38,9 +38,9 @@ component: true
 <div
 	class="flex h-[40rem] w-full flex-col items-center justify-center overflow-hidden rounded-md bg-black"
 >
-	<h1 class="relative z-20 text-center text-3xl font-bold text-white md:text-7xl lg:text-9xl">
+	<h2 class="relative z-20 text-center text-3xl font-bold text-white md:text-7xl lg:text-9xl">
 		Aceternity
-	</h1>
+	</h2>
 	<div class="relative h-40 w-[40rem]">
 		<!-- Gradients -->
 		<div

@@ -145,10 +145,10 @@ component: true
 
 <div class="flex flex-col overflow-hidden">
 	<ContainerScrollAnimation {users}>
-		<h1 slot="titleComponent" class="text-4xl font-semibold text-black dark:text-white">
+		<h2 slot="titleComponent" class="text-4xl font-semibold text-black dark:text-white">
 			Unleash the power of <br />
 			<span class="mt-1 text-4xl font-bold leading-none md:text-[6rem]"> Scroll Animations </span>
-		</h1>
+		</h2>
 	</ContainerScrollAnimation>
 </div>
 ```
@@ -251,8 +251,8 @@ component: true
 								</div>
 								<img src={user.image} class="rounded-tl-md rounded-tr-md text-sm" alt="thumbnail" />
 								<div class="p-4">
-									<h1 class="text-sm font-semibold">{user.name}</h1>
-									<h2 class=" text-xs text-gray-500">{user.designation}</h2>
+									<h2 class="text-sm font-semibold">{user.name}</h2>
+									<h3 class=" text-xs text-gray-500">{user.designation}</h3>
 								</div>
 							</div>
 						</Motion>

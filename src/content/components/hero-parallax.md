@@ -169,9 +169,9 @@ component: true
 	class="relative flex h-[300vh] flex-col self-auto overflow-hidden py-4 antialiased [perspective:1000px] [transform-style:preserve-3d]"
 >
 	<div class="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-8 md:py-4">
-		<h1 class="text-2xl font-bold dark:text-white md:text-7xl">
+		<h2 class="text-2xl font-bold dark:text-white md:text-7xl">
 			The Ultimate <br /> development studio
-		</h1>
+		</h2>
 		<p class="mt-8 max-w-2xl text-base dark:text-neutral-200 md:text-xl">
 			We build beautiful products with the latest technologies and frameworks. We are a team of
 			passionate developers and designers that love to build amazing products.

@@ -54,9 +54,9 @@ component: true
 				</svg>
 			</div>
 
-			<h1 class="relative z-50 mb-4 text-xl font-bold text-white">
+			<h2 class="relative z-50 mb-4 text-xl font-bold text-white">
 				Meteors because they&apos;re cool
-			</h1>
+			</h2>
 
 			<p class="relative z-50 mb-4 text-base font-normal text-slate-500">
 				Make something awesome with this super cool meteor effect. It will make people happy when

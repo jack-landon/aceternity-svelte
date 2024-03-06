@@ -35,7 +35,7 @@ component: true
 	/>
 
 	<BackgroundBoxes />
-	<h1 class={cn('relative z-20 text-xl text-white md:text-4xl')}>Tailwind is Awesome</h1>
+	<h2 class={cn('relative z-20 text-xl text-white md:text-4xl')}>Tailwind is Awesome</h2>
 	<p class="relative z-20 mt-2 text-center text-neutral-300">
 		Framer motion is the best animation library ngl
 	</p>

@@ -12,6 +12,8 @@
 />
 
 <div>
+	<h1 class="text-4xl font-bold">Components</h1>
+
 	<div
 		class="relative z-40 grid grid-cols-1 items-start gap-20 py-8 pb-40 md:grid-cols-2 lg:grid-cols-2"
 	>

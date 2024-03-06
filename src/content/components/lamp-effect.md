@@ -38,12 +38,12 @@ component: true
 			ease: 'easeInOut'
 		}}
 	>
-		<h1
+		<h2
 			use:motion
 			class="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text py-4 text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
 		>
 			Build lamps <br /> the right way
-		</h1>
+		</h2>
 	</Motion>
 </LampEffect>
 ```
