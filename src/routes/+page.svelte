@@ -25,7 +25,7 @@
 				target="_blank"
 				class="font-bold hover:underline">Aceternity UI</a
 			>
-			to Svelte, and is not affiliated with
+			for Svelte, and is not affiliated with
 			<a href="https://twitter.com/mannupaaji" target="_blank" class="font-bold hover:underline"
 				>@mannupaaji</a
 			>.

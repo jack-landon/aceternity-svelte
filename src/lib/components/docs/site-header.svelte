@@ -29,12 +29,15 @@
 						</div>
 					</a>
 				</Button> -->
-				<!-- <a href={siteConfig.links.twitter} target="_blank" rel="noreferrer">
-					<div>
-						<Icons.twitter class="h-3 w-3 fill-current" />
-						<span class="sr-only">X (formerly known as Twitter)</span>
-					</div>
-				</a> -->
+				<Button variant="outline" class="mr-2">
+					<a href={siteConfig.links.twitter} target="_blank" rel="noreferrer">
+						<div>
+							<Icons.twitter class="h-3 w-3 fill-current" />
+							<span class="sr-only">X (formerly known as Twitter)</span>
+						</div>
+					</a>
+				</Button>
+
 				<Lightswitch />
 				<!-- <ModeToggle /> -->
 			</nav>

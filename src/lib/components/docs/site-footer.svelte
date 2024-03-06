@@ -28,7 +28,7 @@
 		<p>
 			Ported to Svelte by{' '}
 			<a
-				href="https://sveltekit.io"
+				href="https://twitter.com/JackLandonX"
 				target="_blank"
 				rel="noreferrer"
 				class="font-medium text-sky-500 underline"

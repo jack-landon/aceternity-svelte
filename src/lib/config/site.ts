@@ -5,7 +5,7 @@ export const siteConfig = {
 	description:
 		'Add incredible animated components to your Svelte App for free. Make incredible landing pages in minutes by copy-pasting the source code. 😎',
 	links: {
-		// twitter: 'https://twitter.com/huntabyte',
+		twitter: 'https://twitter.com/JackLandonX'
 		// github: 'https://github.com/huntabyte/shadcn-svelte',
 		// shadTwitter: 'https://twitter.com/shadcn',
 		// shadGithub: 'https://github.com/shadcn/ui'
