@@ -24,8 +24,10 @@ import LayoutGridImage from '$lib/assets/component-preview-images/layout-grid.pn
 import MacbookScrollImage from '$lib/assets/component-preview-images/macbook-scroll.webp?enhanced';
 import MeteorsImage from '$lib/assets/component-preview-images/meteors.png?enhanced';
 import MovingBorderImage from '$lib/assets/component-preview-images/moving-border.png?enhanced';
+import MultiStepLoaderImage from '$lib/assets/component-preview-images/multi-step-loader.webp?enhanced';
 import NavbarMenuImage from '$lib/assets/component-preview-images/navbar-menu.png?enhanced';
 import ParallaxScrollImage from '$lib/assets/component-preview-images/parallax-scroll.png?enhanced';
+import SignupForm from '$lib/assets/component-preview-images/signup-form.webp?enhanced';
 import SparklesImage from '$lib/assets/component-preview-images/sparkles.png?enhanced';
 import SpotlightImage from '$lib/assets/component-preview-images/spotlight.png?enhanced';
 import StickyScrollRevealImage from '$lib/assets/component-preview-images/sticky-scroll-reveal.png?enhanced';
@@ -386,8 +388,10 @@ export const aceternityComponentsIds = [
 	'macbook-scroll',
 	'meteors',
 	'moving-border',
+	'multi-step-loader',
 	'navbar-menu',
 	'parallax-scroll',
+	'signup-form',
 	'sparkles',
 	'spotlight',
 	'sticky-scroll-reveal',
@@ -749,6 +753,20 @@ export const aceternityComponents = [
 		dateModified: '2024-02-13T01:00:00+10:00',
 		wip: false
 	},
+	// {
+	// 	id: 'multi-step-loader',
+	// 	name: 'Multi Step Loader',
+	// 	description:
+	// 		'A step loader for screens that take a lot of time to load.',
+	// 	thumbnail: MultiStepLoaderImage,
+	// 	video: '',
+	// 	file: 'multi-step-loader.md',
+	// 	disabled: false,
+	// 	dependencies: ['svelte-motion'],
+	// 	props: [{ name: 'className', type: 'string', description: '' }],
+	// 	dateModified: '2024-03-08T014:00:00+10:00',
+	// 	wip: false
+	// },
 	{
 		id: 'navbar-menu',
 		name: 'Navbar Menu',
@@ -773,6 +791,20 @@ export const aceternityComponents = [
 		dependencies: ['svelte-motion'],
 		props: [{ name: 'className', type: 'string', description: '' }],
 		dateModified: '2024-02-13T01:00:00+10:00',
+		wip: false
+	},
+	{
+		id: 'signup-form',
+		name: 'Signup Form',
+		description:
+			"A customizable form built on top of shadcn's input and label, with a touch of framer motion",
+		thumbnail: SignupForm,
+		video: '',
+		file: 'signup-form.md',
+		disabled: false,
+		dependencies: ['svelte-motion'],
+		props: [{ name: 'className', type: 'string', description: '' }],
+		dateModified: '2024-03-08T01:00:00+10:00',
 		wip: false
 	},
 	{
