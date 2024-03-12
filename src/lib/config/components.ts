@@ -753,20 +753,19 @@ export const aceternityComponents = [
 		dateModified: '2024-02-13T01:00:00+10:00',
 		wip: false
 	},
-	// {
-	// 	id: 'multi-step-loader',
-	// 	name: 'Multi Step Loader',
-	// 	description:
-	// 		'A step loader for screens that take a lot of time to load.',
-	// 	thumbnail: MultiStepLoaderImage,
-	// 	video: '',
-	// 	file: 'multi-step-loader.md',
-	// 	disabled: false,
-	// 	dependencies: ['svelte-motion'],
-	// 	props: [{ name: 'className', type: 'string', description: '' }],
-	// 	dateModified: '2024-03-08T014:00:00+10:00',
-	// 	wip: false
-	// },
+	{
+		id: 'multi-step-loader',
+		name: 'Multi Step Loader',
+		description: 'A step loader for screens that take a lot of time to load.',
+		thumbnail: MultiStepLoaderImage,
+		video: '',
+		file: 'multi-step-loader.md',
+		disabled: false,
+		dependencies: ['svelte-motion'],
+		props: [{ name: 'className', type: 'string', description: '' }],
+		dateModified: '2024-03-13T00:30:00+10:00',
+		wip: false
+	},
 	{
 		id: 'navbar-menu',
 		name: 'Navbar Menu',

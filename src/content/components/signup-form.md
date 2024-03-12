@@ -146,7 +146,7 @@ component: true
 
 <AddCnUtilCodeBlock />
 
-### Copy the highlighted `spotlight` animation into `tailwind.config.ts` file
+### Modify the config file to add a plugin and a box shadow
 
 <CodeBlock path='tailwind.config.ts'>
 
