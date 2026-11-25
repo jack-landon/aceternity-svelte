@@ -1,3 +1,5 @@
+export const prerender = true;
+
 import { aceternityComponents } from '$lib/config/components';
 import dayjs from 'dayjs';
 type Component = {

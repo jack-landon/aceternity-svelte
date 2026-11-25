@@ -3,6 +3,11 @@ import { redirect } from '@sveltejs/kit';
 import { error } from '@sveltejs/kit';
 import { aceternityComponents } from '@/config/components.js';
 
+// Prerender every component page, not only the ones the crawler finds links to
+export function entries() {
+	return aceternityComponents.map((component) => ({ slug: component.id }));
+}
+
 export async function load(event) {
 	try {
 		console.log('Entering', event.params.slug);

@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvex } from 'mdsvex';
 
@@ -28,10 +28,9 @@ const config = {
 	preprocess: [mdsvex(mdsvexOptions), vitePreprocess({})],
 
 	kit: {
-		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
-		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
-		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
-		adapter: adapter(),
+		// Every page is prerendered (see src/routes/+layout.ts), so the site is plain static files in build/,
+		// served by a static-assets-only Cloudflare Worker (see wrangler.jsonc).
+		adapter: adapter({ fallback: '404.html' }),
 		alias: {
 			$components: 'src/lib/components',
 			'$components/*': 'src/lib/components/*',
